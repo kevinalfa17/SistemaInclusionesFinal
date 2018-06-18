@@ -30,7 +30,7 @@ var SettingsService = (function () {
         this.obj2 = [
             { "id": "1", "descripcion": "Recibido" }, { "id": "2", "descripcion": "En evaluacion" },
             { "id": "3", "descripcion": "Evaluado" }, { "id": "4", "descripcion": "Pendiente de notificarse" },
-            { "id": "5", "descripcion": "Aprobado" }, { "id": "6", "descripcion": "Requiere valoracion de consejo" }
+            { "id": "5", "descripcion": "Aprobado" }, { "id": "6", "descripcion": "Rechazado" }, { "id": "7", "descripcion": "Requiere valoracion de consejo" }
         ];
         //borrar
         this.obj3 = [
@@ -46,15 +46,15 @@ var SettingsService = (function () {
         return this._http.get(this._Server.direction + 'ce/Config').map(function (res) { return res.json(); }).catch(this._Server.handleError);
         // return Observable.of(this.obj); //borrar    
     };
-    SettingsService.prototype.changeInitialDate = function (newDate) {
-        console.log("VAMOS A LA BASE A PONER DE FECHA INICIAL " + newDate);
-    };
-    SettingsService.prototype.changeInterDate = function (newDate) {
-        console.log("VAMOS A LA BASE A PONER DE FECHA INTERMEDIA " + newDate);
-    };
-    SettingsService.prototype.changeFinalDate = function (newDate) {
-        console.log("VAMOS A LA BASE A PONER DE FECHA FINAL " + newDate);
-    };
+    // changeInitialDate(newDate) {
+    //     console.log("VAMOS A LA BASE A PONER DE FECHA INICIAL " + newDate);
+    // }
+    // changeInterDate(newDate) {
+    //     console.log("VAMOS A LA BASE A PONER DE FECHA INTERMEDIA " + newDate);
+    // }
+    // changeFinalDate(newDate) {
+    //     console.log("VAMOS A LA BASE A PONER DE FECHA FINAL " + newDate);
+    // }
     /**
      * Return all the possibles status for a service
      */

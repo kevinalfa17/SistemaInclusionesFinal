@@ -149,11 +149,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{reqDetails.type}}</td>
-                                        <td>{{reqDetails.cursos.codigo}}</td>
-                                        <td>{{reqDetails.cursos.nombre}}</td>
-                                        <td>{{reqDetails.cursos.escuelas.nombre}}</td>
+                                    <tr *ngFor="let item of cursesDetails">
+                                        <td>
+                                            <strong> {{item.curso}} </strong>
+                                        </td>
+                                        <td>{{item.cursos.nombre}}</td>
+                                        <td>{{item.cursos.escuela}}</td>
+                                        <td>{{item.cursos.creditos}}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -26,7 +26,7 @@ export class SettingsService {
     private obj2 = [
         { "id": "1", "descripcion": "Recibido" }, { "id": "2", "descripcion": "En evaluacion" },
         { "id": "3", "descripcion": "Evaluado" }, { "id": "4", "descripcion": "Pendiente de notificarse" },
-        { "id": "5", "descripcion": "Aprobado" }, { "id": "6", "descripcion": "Requiere valoracion de consejo" }
+        { "id": "5", "descripcion": "Aprobado" }, { "id": "6", "descripcion": "Rechazado" }, { "id": "7", "descripcion": "Requiere valoracion de consejo" }
     ];
 
     //borrar
@@ -48,17 +48,17 @@ export class SettingsService {
         // return Observable.of(this.obj); //borrar    
     }
 
-    changeInitialDate(newDate) {
-        console.log("VAMOS A LA BASE A PONER DE FECHA INICIAL " + newDate);
-    }
+    // changeInitialDate(newDate) {
+    //     console.log("VAMOS A LA BASE A PONER DE FECHA INICIAL " + newDate);
+    // }
 
-    changeInterDate(newDate) {
-        console.log("VAMOS A LA BASE A PONER DE FECHA INTERMEDIA " + newDate);
-    }
+    // changeInterDate(newDate) {
+    //     console.log("VAMOS A LA BASE A PONER DE FECHA INTERMEDIA " + newDate);
+    // }
 
-    changeFinalDate(newDate) {
-        console.log("VAMOS A LA BASE A PONER DE FECHA FINAL " + newDate);
-    }
+    // changeFinalDate(newDate) {
+    //     console.log("VAMOS A LA BASE A PONER DE FECHA FINAL " + newDate);
+    // }
 
     /**
      * Return all the possibles status for a service

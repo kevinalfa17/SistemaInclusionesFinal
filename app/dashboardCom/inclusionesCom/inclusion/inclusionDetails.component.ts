@@ -6,6 +6,8 @@ import { CursesService } from '../../services/curses.service';
 import { StudentsService } from '../../services/students.service';
 import { UsersService } from '../../services/users.service';
 import { SettingsService } from '../../services/settings.service';
+import { NotificationsService } from '../../services/notifications.service'; // private _notifications: NotificationsService
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 declare var $: any;
 declare var swal: any;
@@ -14,7 +16,7 @@ declare var swal: any;
     moduleId: module.id,
     selector: 'details-Inclusion-Com-cmp',
     templateUrl: 'inclusionDetails.component.html',
-    providers: [InclusionsService, CursesService, StudentsService, UsersService, SettingsService] // the provider of inclusions
+    providers: [InclusionsService, CursesService, StudentsService, UsersService, SettingsService, NotificationsService] // the provider of inclusions
 })
 
 export class InclusionesDetailsComComponent implements OnInit, OnDestroy {
@@ -33,7 +35,8 @@ export class InclusionesDetailsComComponent implements OnInit, OnDestroy {
 
 
     constructor(private _route: ActivatedRoute, private _location: Location, private _inclusionService: InclusionsService,
-        private _cursesService: CursesService, private _studentsService: StudentsService, private _usersService: UsersService, private _settingsService: SettingsService) { }
+        private _cursesService: CursesService, private _studentsService: StudentsService, private _usersService: UsersService, 
+        private _settingsService: SettingsService, private _notifications: NotificationsService) { }
 
     ngOnInit(): any {
         this._usersService.getAllComUsersRoles().subscribe(  // get the status
@@ -131,6 +134,9 @@ export class InclusionesDetailsComComponent implements OnInit, OnDestroy {
                         resp => {
                             this.cursesDetails = resp; // assign to the local object        
                             var i = 0;
+
+                            console.log("EL SEMESTRE s");
+                            console.log(resp);
                             while (i < resp.length) {
                                 var temInd = this.searchPosSchool(resp[i].id);
 
@@ -195,7 +201,7 @@ export class InclusionesDetailsComComponent implements OnInit, OnDestroy {
 
         var req = {
             "estado_solicitud": this.inclusionDetails.estado, "memo_solicitud": this.inclusionDetails.memo_solicitud, "sesion_solicitud": this.inclusionDetails.sesion_solicitud,
-            "encargado_solicitud": 1, "observacion_solicitud": this.inclusionDetails.observacion_solicitud, "requiere_proceso": this.inclusionDetails.requiere_proceso
+            "encargado_solicitud": Cookie.get('idUser'), "observacion_solicitud": this.inclusionDetails.observacion_solicitud, "requiere_proceso": this.inclusionDetails.requiere_proceso
         };
         // console.log("upppupupupup");
         // console.log(req);
@@ -203,6 +209,20 @@ export class InclusionesDetailsComComponent implements OnInit, OnDestroy {
             resp => {
                 console.log(resp);
                 if (resp == 'Objeto cambiado') {
+
+                    var obj = {
+                        "visto": false,
+                        "tipo": "Mensaje del Sistema CE con respecta a una inclusión", // asunto
+                        "fecha": new Date().toJSON().slice(0,10).replace(/-/g,'/'),
+                        "correo_electronico": this.inclusionDetails.correo_electronico, // correo al q le voy a mandar
+                        "descripcion": "Su apelación respecto a una inclusión ha sido modificada, el estado es "+ req.estado_solicitud// cuerpo
+                    };
+
+                    console.log(obj);
+
+                    this._notifications.createEmail(obj).subscribe(resp => {
+                        console.log(resp);
+                    });
 
                     swal({
                         title: 'Mensaje',

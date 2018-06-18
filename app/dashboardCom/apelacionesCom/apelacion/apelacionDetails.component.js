@@ -13,15 +13,18 @@ var router_1 = require('@angular/router');
 var appeals_service_1 = require('../../services/appeals.service');
 var students_service_1 = require('../../services/students.service');
 var settings_service_1 = require('../../services/settings.service');
-var users_service_1 = require('../../services/users.service'); // private _usersService: UsersService
+var users_service_1 = require('../../services/users.service');
+var notifications_service_1 = require('../../services/notifications.service'); // private _notifications: NotificationsService
+var ng2_cookies_1 = require('ng2-cookies/ng2-cookies');
 var ApelacionDetailsComComponent = (function () {
-    function ApelacionDetailsComComponent(_route, _router, _requestService, _studentsService, _settingsService, _usersService) {
+    function ApelacionDetailsComComponent(_route, _router, _requestService, _studentsService, _settingsService, _usersService, _notifications) {
         this._route = _route;
         this._router = _router;
         this._requestService = _requestService;
         this._studentsService = _studentsService;
         this._settingsService = _settingsService;
         this._usersService = _usersService;
+        this._notifications = _notifications;
     }
     ApelacionDetailsComComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -97,9 +100,10 @@ var ApelacionDetailsComComponent = (function () {
     };
     ;
     ApelacionDetailsComComponent.prototype.updateData = function () {
+        var _this = this;
         var req = {
             "estado_apelacion": this.requestDetails.estado_apelacion, "memo_apelacion": this.requestDetails.memo_solicitud, "sesion_apelacion": this.requestDetails.sesion_solicitud,
-            "encargado_apelacion": 1, "observacion_apelacion": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
+            "encargado_apelacion": ng2_cookies_1.Cookie.get('idUser'), "observacion_apelacion": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
         };
         // console.log("upppupupupup");
         // console.log(req);
@@ -108,6 +112,16 @@ var ApelacionDetailsComComponent = (function () {
             resp) {
             console.log(resp);
             if (resp == 'Objeto cambiado') {
+                var obj = {
+                    "visto": false,
+                    "tipo": "Mensaje del Sistema CE con respecta a una apelación",
+                    "fecha": new Date(),
+                    "correo_electronico": _this.requestDetails.correo_electronico,
+                    "descripcion": "Su apelación respecto a " + _this.apelacionTipo + " ha sido modificada, el estado es " + req.estado_apelacion // cuerpo
+                };
+                _this._notifications.createEmail(obj).subscribe(function (resp) {
+                    console.log(resp);
+                });
                 swal({
                     title: 'Mensaje',
                     text: "Se van a realizar los cambios",
@@ -136,9 +150,9 @@ var ApelacionDetailsComComponent = (function () {
             moduleId: module.id,
             selector: 'details-Inclusion-Com-cmp',
             templateUrl: 'apelacionDetails.component.html',
-            providers: [appeals_service_1.AppealsService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService] // the provider of apelacion
+            providers: [appeals_service_1.AppealsService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService, notifications_service_1.NotificationsService] // the provider of apelacion
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, appeals_service_1.AppealsService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, appeals_service_1.AppealsService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService, notifications_service_1.NotificationsService])
     ], ApelacionDetailsComComponent);
     return ApelacionDetailsComComponent;
 }());

@@ -33,7 +33,7 @@ export class TableEstudiantesComponent implements OnInit {
                 //{ name: "Ponderado", type: "number", editable: true },
                 //{ name: "Cita Matricula", type: "number", editable: true },
             ]
-            , header: true, footer: false, edit: false, delete: true
+            , header: true, footer: false, edit: false, delete: true, create:true, search:true
         };
 
         this.data = [[]
@@ -41,11 +41,6 @@ export class TableEstudiantesComponent implements OnInit {
             //["0000000000", "Defecto", "Defecto", "Defecto", "Defecto", "Defecto@Defecto.Defecto", "00000000", "Defecto", "Defecto"]
 
         ];
-
-        // {
-        //     "carne": 47, "primer_nombre": "toto", "segundo_nombre": "", "primer_apellido": "cuco", "segundo_apellido": "lolo",
-        //     "correo_electronico": "gb3@gmail.com", "carrera": 1
-        // }
 
         this._studentsService.getAll().subscribe(  // get the details
             resp => {
@@ -70,5 +65,9 @@ export class TableEstudiantesComponent implements OnInit {
 
     importStudents() {
         console.log("Hay q importar");
+    }
+
+    addNewStudent(){
+
     }
 }

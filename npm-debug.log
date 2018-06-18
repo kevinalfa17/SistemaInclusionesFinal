@@ -7,8 +7,8 @@
 6 silly lifecycle material-dashboard-pro-angular2@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle material-dashboard-pro-angular2@1.0.0~start: material-dashboard-pro-angular2@1.0.0
 8 verbose lifecycle material-dashboard-pro-angular2@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle material-dashboard-pro-angular2@1.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/gabriel/git/Sistema Inclusiones/SistemaInclusiones-Frontend/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-10 verbose lifecycle material-dashboard-pro-angular2@1.0.0~start: CWD: /home/gabriel/git/Sistema Inclusiones/SistemaInclusiones-Frontend
+9 verbose lifecycle material-dashboard-pro-angular2@1.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/gabriel/Escritorio/Sistema/SistemaInclusionesFinal/node_modules/.bin:/home/gabriel/SimpleEscalar/SimpleScalar/How-to-install-SimpleScalar-on-Ubuntu/build:/home/gabriel/SimpleEscalar/SimpleScalar/How-to-install-SimpleScalar-on-Ubuntu/build/bin:/home/gabriel/bin:/home/gabriel/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle material-dashboard-pro-angular2@1.0.0~start: CWD: /home/gabriel/Escritorio/Sistema/SistemaInclusionesFinal
 11 silly lifecycle material-dashboard-pro-angular2@1.0.0~start: Args: [ '-c', 'tsc && concurrently "tsc -w" "lite-server" ' ]
 12 silly lifecycle material-dashboard-pro-angular2@1.0.0~start: Returned: code: 2  signal: null
 13 info lifecycle material-dashboard-pro-angular2@1.0.0~start: Failed to exec start script
@@ -23,7 +23,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:927:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid material-dashboard-pro-angular2@1.0.0
-16 verbose cwd /home/gabriel/git/Sistema Inclusiones/SistemaInclusiones-Frontend
+16 verbose cwd /home/gabriel/Escritorio/Sistema/SistemaInclusionesFinal
 17 error Linux 4.13.0-45-generic
 18 error argv "/usr/local/bin/node" "/usr/bin/npm" "start"
 19 error node v8.4.0

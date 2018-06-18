@@ -16,8 +16,10 @@ var curses_service_1 = require('../../services/curses.service');
 var students_service_1 = require('../../services/students.service');
 var settings_service_1 = require('../../services/settings.service');
 var users_service_1 = require('../../services/users.service');
+var notifications_service_1 = require('../../services/notifications.service');
+var ng2_cookies_1 = require('ng2-cookies/ng2-cookies');
 var LevantamientoRNDetailsComComponent = (function () {
-    function LevantamientoRNDetailsComComponent(_route, _location, _requestService, _cursesService, _studentsService, _settingsService, _usersService) {
+    function LevantamientoRNDetailsComComponent(_route, _location, _requestService, _cursesService, _studentsService, _settingsService, _usersService, _notifications) {
         this._route = _route;
         this._location = _location;
         this._requestService = _requestService;
@@ -25,6 +27,7 @@ var LevantamientoRNDetailsComComponent = (function () {
         this._studentsService = _studentsService;
         this._settingsService = _settingsService;
         this._usersService = _usersService;
+        this._notifications = _notifications;
         this.cursesDetails = []; // Details of the curses of the current semester
         this.allSchools = []; // Details of the curses of the current semester
     }
@@ -153,9 +156,10 @@ var LevantamientoRNDetailsComComponent = (function () {
     };
     ;
     LevantamientoRNDetailsComComponent.prototype.updateData = function () {
+        var _this = this;
         var req = {
             "estado_solicitud": this.requestDetails.estado, "memo_solicitud": this.requestDetails.memo_solicitud, "sesion_solicitud": this.requestDetails.sesion_solicitud,
-            "encargado_solicitud": 1, "observacion_solicitud": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
+            "encargado_solicitud": ng2_cookies_1.Cookie.get('idUser'), "observacion_solicitud": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
         };
         // console.log("upppupupupup");
         // console.log(req);
@@ -164,6 +168,16 @@ var LevantamientoRNDetailsComComponent = (function () {
             resp) {
             console.log(resp);
             if (resp == 'Objeto modificado') {
+                var obj = {
+                    "visto": false,
+                    "tipo": "Mensaje del Sistema CE con respecta a una apelación",
+                    "fecha": new Date(),
+                    "correo_electronico": _this.requestDetails.correo_electronico,
+                    "descripcion": "Su apelación respecto a un levantamiento RN ha sido modificada, el estado es " + req.estado_solicitud // cuerpo
+                };
+                _this._notifications.createEmail(obj).subscribe(function (resp) {
+                    console.log(resp);
+                });
                 swal({
                     title: 'Mensaje',
                     text: "Se van a realizar los cambios",
@@ -192,9 +206,9 @@ var LevantamientoRNDetailsComComponent = (function () {
             moduleId: module.id,
             selector: 'details-Inclusion-Com-cmp',
             templateUrl: 'levantamientoRNDetails.component.html',
-            providers: [levantamientoRN_service_1.LevantamientoRNService, curses_service_1.CursesService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService] // the provider of RN
+            providers: [levantamientoRN_service_1.LevantamientoRNService, curses_service_1.CursesService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService, notifications_service_1.NotificationsService] // the provider of RN
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location, levantamientoRN_service_1.LevantamientoRNService, curses_service_1.CursesService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location, levantamientoRN_service_1.LevantamientoRNService, curses_service_1.CursesService, students_service_1.StudentsService, settings_service_1.SettingsService, users_service_1.UsersService, notifications_service_1.NotificationsService])
     ], LevantamientoRNDetailsComComponent);
     return LevantamientoRNDetailsComComponent;
 }());

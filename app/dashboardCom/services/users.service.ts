@@ -54,6 +54,13 @@ export class UsersService {
         ).catch(this._Server.handleError);
     }
 
+    editData(id, req) {
+        return this._http.put(this._Server.directionUsers + 'ce/Users/' + id, req).map(
+            (res: Response) => res.json()
+        ).catch(this._Server.handleError);
+    }
+    
+
     /**
      *  Check all the types of roles
      */

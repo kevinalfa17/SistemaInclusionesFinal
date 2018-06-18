@@ -16,12 +16,17 @@ export class NotificationsService {
 
     // borrar
     private obj = [
-        {"id": 0, "tipo":"inc", "estudiante": 2015104425, "descripcion":" algun lugar gg", "leido": false, "idService": 0 },
-        {"id": 10, "tipo":"req", "estudiante": 2015104425, "descripcion":" algun lugar gg2", "leido": false, "idService": 1 },
-        {"id": 55, "tipo":"reqRN", "estudiante": 2015104425, "descripcion":" algun lugar gg3", "leido": false, "idService": 2 },
-        {"id": 55, "tipo":"ape", "estudiante": 2015104425, "descripcion":" algun lugar gg3", "leido": false, "idService": 2 },
-        
+        { "id": 0, "tipo": "inc", "estudiante": 2015104425, "descripcion": " algun lugar gg", "leido": false, "idService": 0 },
+        { "id": 10, "tipo": "req", "estudiante": 2015104425, "descripcion": " algun lugar gg2", "leido": false, "idService": 1 },
+        { "id": 55, "tipo": "reqRN", "estudiante": 2015104425, "descripcion": " algun lugar gg3", "leido": false, "idService": 2 },
+        { "id": 55, "tipo": "ape", "estudiante": 2015104425, "descripcion": " algun lugar gg3", "leido": false, "idService": 2 },
+
     ];
+
+
+    createEmail(request) {
+        return this._http.post(this._Server.direction + 'ce/Notification/', request).map((res: Response) => res.json());
+    }
 
 
     getAll(): Observable<any> {
@@ -39,8 +44,8 @@ export class NotificationsService {
         return Observable.of(this.obj); //borrar
     }
 
-    changeState(id, state){
-        console.log("cambiar el estado de"+ id + " a: "+state);
+    changeState(id, state) {
+        console.log("cambiar el estado de" + id + " a: " + state);
     }
 
     deleteByID(id) {
