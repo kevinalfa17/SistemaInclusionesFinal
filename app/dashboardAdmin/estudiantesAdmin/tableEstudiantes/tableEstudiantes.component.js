@@ -47,7 +47,8 @@ var TableEstudiantesComponent = (function () {
     TableEstudiantesComponent.prototype.importStudents = function () {
         console.log("Hay q importar");
     };
-    TableEstudiantesComponent.prototype.addNewStudent = function () {
+    TableEstudiantesComponent.prototype.onCreate = function () {
+        console.log(this.data[this.data.length]);
     };
     TableEstudiantesComponent = __decorate([
         core_1.Component({

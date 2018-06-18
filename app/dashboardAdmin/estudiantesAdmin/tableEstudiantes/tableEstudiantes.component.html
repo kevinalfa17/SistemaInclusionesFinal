@@ -11,7 +11,7 @@
             <div class="toolbar">
                 <!--        Here you can write extra buttons/actions for the toolbar              -->
             </div>
-            <table-cmp [data]="data" [structure]="structure"></table-cmp>
+            <table-cmp [data]="data" [structure]="structure" (created)="onCreate($event)" ></table-cmp>
         </div>
     </div>
 </div>
