@@ -1,0 +1,35 @@
+
+<div class="wrapper wrapper-full-page">
+    <div class="full-page lock-page" filter-color="black" data-image="../assets/img/login.jpg">
+        <!--   you can change the color of the filter page using: data-color="blue | green | orange | red | purple" -->
+        <div class="content">
+            <form method="#" action="#">
+                <div class="card card-profile card-hidden">
+                    
+                    <div class="card-content">
+                        <h4 class="card-title">{{id}}</h4>
+                        <div class="form-group label-floating">
+                            <label class="control-label">Ingrese la contrase&ntilde;a</label>
+                            <input type="password" [(ngModel)]="password" name="password" (ngModelChange)="onChange()" class="form-control">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" (click)="login()" class="btn btn-info btn-round" [disabled]="disabledButton">Ingresar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                   Inclusiones
+                </p>
+            </div>
+        </footer>
+        <div class="full-page-background" style="background-image: url(../assets/img/login.jpg) "></div>        
+    </div>
+</div>

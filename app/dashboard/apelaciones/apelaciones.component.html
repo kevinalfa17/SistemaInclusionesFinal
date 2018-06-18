@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Formularios Rechazados</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+
+                        <div *ngIf="data.length">
+                            <table-cmp [data]="data" [structure]="structure"></table-cmp>
+                        </div>
+
+                        <div *ngIf="!data.length">
+                            <h4 style="text-align:center">No solicitudes rechazadas</h4>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="blue">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Apelaciones</h4>
+                            <div class="toolbar">
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+    
+                            <div *ngIf="data.length">
+                                <table-cmp [data]="data2" [structure]="structure2"></table-cmp>
+                            </div>
+    
+                            <div *ngIf="!data.length">
+                                <h4 style="text-align:center">No apelaciones realizadas</h4>
+                            </div>
+    
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+</div>

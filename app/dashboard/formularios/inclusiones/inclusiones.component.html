@@ -1,0 +1,346 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="row">
+                <!--DATOS GENERALES DEL ESTUDIANTE-->
+                <div class="col-md-6">
+                    <div class="card" style="height: 220px">
+                        <div class="card-header card-header-icon" data-background-color="blue">
+                            <i class="material-icons">perm_identity</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">General</h4>
+                            <form method="#" action="#">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Celular</label>
+                                    <input [disabled]="disabled"  type="text" class="form-control" [textMask]="{mask: mask}" [(ngModel)]="phone" name="phone">
+                                </div>
+
+                                <div class="form-group label-floating">
+                                        <label class="control-label">Telefono</label>
+                                        <input [disabled]="disabled"  type="text" class="form-control" [textMask]="{mask: mask}" [(ngModel)]="telephone" name="telephone">
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--DATOS PONDERADO DEL ESTUDIANTE-->
+                <div class="col-md-6">
+                    <div class="card" style="height: 220px">
+                        <div class="card-header card-header-icon" data-background-color="blue">
+                            <i class="material-icons">school</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Ponderado</h4>
+
+
+                            <div class="form-group label-floating">
+                                <label class="control-label">Promedio general</label>
+                                <input [disabled]="disabled"  type="number" class="form-control" number="true" min="0" max="100" [(ngModel)]="score" name="score">
+                            </div>
+
+
+                            <div class="form-group label-floating">
+                                <label>Cita de matricula (Ordinaria)</label>
+                                <input [disabled]="disabled"  type="datetime-local" class="form-control" [(ngModel)]="enroll_date" name="enroll_date">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--Otros requisitos-->
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <form method="#" action="#" class="form-horizontal">
+                            <div class="card-header card-header-text" data-background-color="blue">
+                                <h4 class="card-title">Requisitos</h4>
+                            </div>
+
+                            <div class="card-content">
+
+                                <div class="form-group label-floating">
+                                    <div class="col-md-4">
+
+                                        <div class="checkbox">
+                                            <label>
+                                                <input [disabled]="disabled"  type="checkbox" name="check1" [(ngModel)]="check1"> Levantamiento requisitos
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+
+                                        <div class="checkbox">
+                                            <label>
+                                                <input [disabled]="disabled"  type="checkbox" name="check2" [(ngModel)]="check2"> Levantamiento corequisitos
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input [disabled]="disabled"  type="checkbox" name="check3" [(ngModel)]="check3"> Levantamiento de RN
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Ponderado-->
+                                <div *ngIf="check1 || check2 || check3">
+
+                                    <div class="col-md-4">
+
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Promedio semestre anterior</label>
+                                            <input [disabled]="disabled"  type="number" name="previousScore" [(ngModel)]="previousScore" class="form-control" number="true" min="0" max="100">
+                                        </div>
+                                    </div>
+                                    <div class="row"></div>
+                                </div>
+
+                                <!--Curso a levantar requisitos-->
+                                <div *ngIf="check1 || check2">
+
+                                    <div class="row">
+                                        <div class="tim-typo" style="padding-left:4%!important; margin-bottom:0px">
+                                            <h4>Curso a levantar (Requisito/Correquisito)</h4>
+                                        </div>
+
+                                        <label class="col-sm-2 label-on-left">Curso</label>
+                                        <div class="col-sm-2">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label"></label>
+
+                                                <select [disabled]="disabled"  [(ngModel)]="cursoRequisitos" class="form-control" name="select2" (change)="onChange2($event.target.value)">
+                                                    <option *ngFor="let course of courses; let i = index" [value]="i">
+                                                        {{course.nombre}}
+                                                    </option>
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 label-on-left">C&oacute;digo</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-group">
+                                                <p class="form-control-static">{{cursoLevantar2}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 label-on-left">Cr&eacute;ditos</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-group">
+                                                <p class="form-control-static">{{creditosLevantar2}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--Curso a levantar RN-->
+                                <div *ngIf="check3">
+
+                                    <div class="row">
+                                        <label class="col-sm-2 label-on-left">RN</label>
+                                        <div class="col-sm-2">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label"></label>
+                                                <label class="control-label"></label>
+                                                <input [disabled]="disabled"  type="number" class="form-control" [(ngModel)]="rn" name="rn" number="true" min="0" max="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="tim-typo" style="padding-left:4%!important; margin-bottom:0px">
+                                            <h4>Curso a levantar (RN)</h4>
+                                        </div>
+
+                                        <label class="col-sm-2 label-on-left">Curso</label>
+                                        <div class="col-sm-2">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label"></label>
+
+                                                <select [disabled]="disabled"  [(ngModel)]="cursoRN" class="form-control" name="select3" (change)="onChange3($event.target.value)">
+                                                    <option *ngFor="let course of courses; let i = index" [value]="i">
+                                                        {{course.nombre}}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 label-on-left">C&oacute;digo</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-group">
+                                                <p class="form-control-static">{{cursoLevantar3}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 label-on-left">Cr&eacute;ditos</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-group">
+                                                <p class="form-control-static">{{creditosLevantar3}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!--Archivos y carta-->
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <form method="#" action="#" class="form-horizontal">
+                            <div class="card-header card-header-text" data-background-color="blue">
+                                <h4 class="card-title">Archivos y carta de intención</h4>
+                            </div>
+
+                            <div class="card-content">
+                                <div>
+                                    <h4 class="card-title">Subir un archivo</h4>
+                                    <div>
+                                        <input [disabled]="disabled"  type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4>
+                                                <a data-toggle="collapse" href="#collapse1" aria-expanded="true">Carta de exposición de motivos</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse1" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <h5>Se&ntilde;ores(as):</h5>
+                                                <h5>Comisión ad Hoc Solicitudes de inclusión</h5>
+                                                <br>
+                                                <br>
+                                                <h5>Estimados señores(as):</h5>
+
+                                                <textarea [disabled]="disabled"  [(ngModel)]="letter" name="letter" style="width:100%; height: 300px; max-width: 100%; min-width: 100%; min-height: 100px; max-height: 500px"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+                <!--DATOS LEVANTAMIENTO-->
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <form method="get" action="/" class="form-horizontal">
+                            <div class="card-header card-header-text" data-background-color="blue">
+                                <h4 class="card-title">Inclusion</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="tim-typo" style="padding-left:4%!important; margin-bottom:0px">
+                                        <h4>Curso a incluir</h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 label-on-left">Curso</label>
+                                    <div class="col-sm-2">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label"></label>
+
+                                            <select [disabled]="disabled"  [(ngModel)]="course" class="form-control" name="select1" (change)="onChange1($event.target.value)">
+                                                <option *ngFor="let c of courses; let i = index" [value]="i">
+                                                    {{c.nombre}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 label-on-left">C&oacute;digo</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <p class="form-control-static">{{cursoLevantar}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 label-on-left">Cr&eacute;ditos</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <p class="form-control-static">{{creditosLevantar}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 label-on-left">Profesor</label>
+                                    <div class="col-sm-2">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label"></label>
+                                            <label class="control-label"></label>
+                                            <input [disabled]="disabled"  type="text" class="form-control" [(ngModel)]="professor" name="professor">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 label-on-left">Grupo</label>
+                                    <div class="col-sm-2">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label"></label>
+                                            <label class="control-label"></label>
+                                            <input [disabled]="disabled"  type="number" class="form-control" [(ngModel)]="group" name="group" number="true" min="0" max="100">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button [disabled]="disabled"  class="btn btn-success  pull-right" (click)="send()">
+                                    <i class="material-icons">send</i>Enviar
+                                </button>
+                                <button [disabled]="disabled"  class="btn btn-success  pull-right" (click)="save()">
+                                    <i class="material-icons">save</i>Guardar
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

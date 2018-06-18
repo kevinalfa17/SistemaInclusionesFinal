@@ -1,0 +1,119 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">perm_identity</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Datos del usuario</h4>
+                        <div class="toolbar">
+                    
+                        </div>
+
+                        <div class="row">
+                            <div class="tim-typo" style="padding-left:4%!important; margin-bottom:0px">
+                                <h4>Nombre</h4>
+                                <p>{{nombre}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="tim-typo" style="padding-left:4%!important; margin-bottom:0px">
+                                <h4>Carné</h4>
+                                <p>{{carne}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="tim-typo" style="padding-left:4%!important; margin-bottom:0px">
+                                <h4>Correo</h4>
+                                <p>{{correo}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">alternate_email</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Actualizaci&oacute;n de informacion</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+
+                        <form method="#" action="#">
+                            <div class="form-group ">
+                                <label class="control-label">Primer Nombre</label>
+                                <input type="text" name="pn" [(ngModel)]="currentUser.primer_nombre" class="form-control">
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label">Segundo Nombre</label>
+                                <input type="text" name="sn" [(ngModel)]="currentUser.segundo_nombre" class="form-control">
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label">Primer Apellido</label>
+                                <input type="text" name="pa" [(ngModel)]="currentUser.primer_apellido" class="form-control">
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label">Segundo Apellido</label>
+                                <input type="text" name="sa" [(ngModel)]="currentUser.segundo_apellido" class="form-control">
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label">Correo</label>
+                                <input type="email" name="email" [(ngModel)]="currentUser.correo_electronico" class="form-control">
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label">Contra </label>
+                                <input type="text" name="pass" [(ngModel)]="pass" class="form-control">
+                            </div>
+
+                            <button class="btn btn-success pull-right" (click)="update()">Cambiar información
+                                <div class="ripple-container"></div>
+                            </button>
+                        </form>
+
+                        <button type="button" class="btn btn-info btn-fill" (click)='logout()'> Cerrar Sesión</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">security</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Actualizaci&oacute;n de contraseña</h4>
+                    </div>
+                    <form method="#" action="#">
+                        <div class="form-group ">
+                            <label class="control-label">Primer Nombre</label>
+                            <input type="password" name="pass" [(ngModel)]="currentUser.primer_nombre" class="form-control">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+</div>

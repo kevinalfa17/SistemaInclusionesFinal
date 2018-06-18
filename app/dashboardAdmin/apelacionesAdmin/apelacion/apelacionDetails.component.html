@@ -1,0 +1,126 @@
+<br/>
+<br/>
+<br/>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Detalles de la apelación: {{requestDetails.id}}
+        </h4>
+    </div>
+    <div class="card-content">
+        <ul class="nav nav-pills nav-pills-info">
+            <li class="active">
+                <a href="#tab1" data-toggle="tab">Estudiante</a>
+            </li>
+            <li>
+                <a href="#tab2" data-toggle="tab">Solicitud</a>
+            </li>
+            <li>
+                <a href="#tab3" data-toggle="tab">Área Académica</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del estudiante que solicita:</h3>
+                    <div class="card-content ">
+
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Fecha de envío:</strong> {{requestDetails.fecha_apelacion}} </h4>
+                        <h4>
+                            <strong>Nombre:</strong> {{studentDetails.primer_nombre}} {{studentDetails.segundo_nombre}} {{studentDetails.primer_apellido}}
+                            {{studentDetails.segundo_apellido}}
+                        </h4>
+                        <h4>
+                            <strong>Carné:</strong> {{studentDetails.carne}}</h4>
+                        <h4>
+                            <strong>Correo electrónico:</strong> {{studentDetails.correo_electronico}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab2">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del curso que solicita:</h3>
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div *ngIf="apelacionTipo == 'Inclusión' ">
+                                    <h4>
+                                        <a href="/#/admin/inclusiones/{{requestDetails.id}}  "> Ver solicitud </a>
+                                    </h4>
+                                </div>
+                                <div *ngIf="apelacionTipo == 'Levantamiento Requisito' ">
+                                    <h4>
+                                        <a href="/#/admin/levantamiento/{{requestDetails.id}}  "> Ver solicitud </a>
+                                    </h4>
+                                </div>
+                                <div *ngIf="apelacionTipo == 'Levantamiento Requisito RN' ">
+                                    <h4>
+                                        <a href="/#/admin/levantamientoRN/{{requestDetails.id}}  "> Ver solicitud </a>
+                                    </h4>
+                                </div>
+
+                                <div class="card-content">
+                                    <h3 class="card-title"> Ver archivo adjunto:
+                                        <strong>
+                                            <a href="https://www.google.com"> Link!</a>
+                                        </strong>
+                                    </h3>
+                                </div>
+
+                                <h3>
+                                    <strong>Observación del estudiante para apelar:</strong>
+                                </h3>
+                                <p>{{requestDetails.apelacion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab3">
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Información referente al proceso: </h3>
+                        <div class="table-responsive">
+                            <h4>
+                                <strong>Resultado del proceso:</strong> {{requestDetails.estado_apelacion}}</h4>
+                            <h4>
+                                <strong>Procesado por:</strong> {{requestDetails.encargado_apelacion}}</h4>
+
+                            <h4>
+                                <strong>Requiere proceso en:</strong> {{requestDetails.requiere_proceso}}</h4>
+                            <h4>
+                                <strong>Observación:</strong> {{requestDetails.observacion_apelacion}}</h4>
+                            <h4>
+                                <strong>Número de memorandum:</strong> {{requestDetails.memo_apelacion}}</h4>
+                            <h4>
+                                <strong>Número de sesión:</strong> {{requestDetails.sesion_apelacion}} </h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+    </div>
+    <div class="card-content">
+        <div align="center">
+            <button class="btn btn-info" (click)="navigateToParent()">VOLVER</button>
+        </div>
+
+    </div>

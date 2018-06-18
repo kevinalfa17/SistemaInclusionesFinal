@@ -1,0 +1,252 @@
+<br/>
+<br/>
+<br/>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Detalles de la inclusión: {{inclusionDetails.id}}
+            <strong> {{studentDetails.primer_nombre}} {{studentDetails.segundo_nombre}} {{studentDetails.primer_apellido}} {{studentDetails.segundo_apellido}},
+                {{studentDetails.carne}}.
+            </strong>
+        </h4>
+    </div>
+    <div class="card-content">
+        <ul class="nav nav-pills nav-pills-info">
+            <li class="active">
+                <a href="#tab1" data-toggle="tab">Estudiante</a>
+            </li>
+            <li>
+                <a href="#tab2" data-toggle="tab">Solicitud</a>
+            </li>
+            <li>
+                <a href="#tab3" data-toggle="tab">Plan para semestre</a>
+            </li>
+            <li>
+                <a href="#tab4" data-toggle="tab">Área Académica</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del estudiante que solicita:</h3>
+                    <div class="card-content ">
+
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Fecha de envío:</strong> {{inclusionDetails.fecha_solicitud}}</h4>
+                        <h4>
+                            <strong>Nombre:</strong> {{studentDetails.primer_nombre}} {{studentDetails.segundo_nombre}} {{studentDetails.primer_apellido}}
+                            {{studentDetails.segundo_apellido}}
+                        </h4>
+                        <h4>
+                            <strong>Carné:</strong> {{studentDetails.carne}}</h4>
+                        <h4>
+                            <strong>Correo electrónico:</strong> {{studentDetails.correo_electronico}}</h4>
+                        <h4>
+                            <strong>Teléfono:</strong> {{inclusionDetails.telefono}}</h4>
+                        <h4>
+                            <strong>Teléfono fijo:</strong> {{inclusionDetails.telefono_fijo}}</h4>
+                        <h4>
+                            <strong>Promedio general:</strong> {{inclusionDetails.promedio_general}}</h4>
+                        <h4>
+                            <strong>Promedio general anterior:</strong> {{inclusionDetails.promedio_general_anterior}}</h4>
+                        <h4>
+                            <strong>Cita de matrícula:</strong> {{inclusionDetails.cita_matricula}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab2">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del curso que solicita:</h3>
+                    <div class="card-content">
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Curso:</strong> {{cursoSolicitaDetails.codigo}} {{cursoSolicitaDetails.nombre}} {{cursoSolicitaDetails.grupo}}</h4>
+
+                        <h4>
+                            <strong>Grupo:</strong> {{inclusionDetails.grupo}}</h4>
+
+                        <h4>
+                            <strong>Profesor:</strong> {{inclusionDetails.profesor}}
+                        </h4>
+
+                        <h4>
+                            <strong>Periodo:</strong> {{periodList.semestre}}S {{periodList.anno}}</h4>
+                        <br/>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Ver archivo adjunto:
+                            <strong>
+                                <a href="https://www.google.com"> Link!</a>
+                            </strong>
+                        </h3>
+                    </div>
+                    <div class="card-content" *ngIf="reqDetails.se_requiere != ''">
+                        <h3 class="card-title"> Se requiere revisión de proceso: </h3>
+                        <div class="table-responsive">
+
+                            <table class="table">
+                                <table class="table">
+                                    <thead class="text-blue">
+                                        <tr>
+                                            <th>Tipo</th>
+                                            <th>Código</th>
+                                            <th>Nombre</th>
+                                            <th>Escuela</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{reqDetails.tipo}}</td>
+                                            <td>{{reqDetails.codigo}}</td>
+                                            <td>{{reqDetails.nombre}}</td>
+                                            <td>{{reqDetails.escuela}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3>
+                                    <strong>Carta:</strong>
+                                </h3>
+                                <p>{{inclusionDetails.carta}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab3">
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Lista de cursos a llevar en el presente semestre: </h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-blue">
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Código</th>
+                                        <th>Nombre</th>
+                                        <th>Escuela</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{reqDetails.type}}</td>
+                                        <td>{{reqDetails.cursos.codigo}}</td>
+                                        <td>{{reqDetails.cursos.nombre}}</td>
+                                        <td>{{reqDetails.cursos.escuelas.nombre}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab4">
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title"> Edición del proceso: </h3>
+
+                    <div class="col-md-5 col-md-offset-3">
+                        <!-- <div class="col-md-5 col-md-offset-3"><
+                            <div class="col-md-6 col-md-offset-3 text-center"> <div class="alert alert-info"> -->
+                        <div class="card">
+
+                            <div class="card-content">
+                                <form method="#" action="#" (submit)="updateData()">
+
+
+                                    <div class="form-group label-floating">
+                                        <select class="selectpicker" data-style="btn btn-primary btn-round" [(ngModel)]="inclusionDetails.estado" name="state">
+                                            <option disabled selected>Seleccione el estado</option>
+                                            <option *ngFor="let stat of statusList" [value]="stat.descripcion">{{stat.descripcion}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <select class="selectpicker" data-style="btn btn-primary btn-round" [(ngModel)]="inclusionDetails.encargado_solicitud" name="revBy">
+                                            <option disabled selected>Seleccione quién revisa</option>
+                                            <option *ngFor="let stat of rolesList" [value]="stat.name">{{stat.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong> Requiere proceso en </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="inclusionDetails.requiere_proceso" name="reqP">
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong>observacion_solicitud </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="inclusionDetails.observacion_solicitud" name="obse">
+                                    </div>
+
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong>Número de memorandum </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="inclusionDetails.memo_solicitud" name="memo">
+                                    </div>
+
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong>Número de sesión </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="inclusionDetails.sesion_solicitud" name="sesion_solicitud">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-fill btn-success">Realizar Cambios</button>
+
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <br/>
+    <br/>
+
+</div>
+<div class="card-content">
+    <div align="center">
+        <button class="btn btn-info" (click)="navigateToParent()">VOLVER</button>
+    </div>
+
+</div>

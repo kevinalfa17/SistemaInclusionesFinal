@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Inclusiones | Login</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="../../assets/css/material-dashboard.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+    />
+</head>
+
+<body>
+
+
+
+    <div class="wrapper wrapper-full-page">
+        <div class="full-page register-page" filter-color="black" data-image="../../assets/img/login.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="card card-signup">
+                            <h2 class="card-title text-center">Ingreso</h2>
+                            <div class="row">
+                                <div class="col-md-5 col-md-offset-1">
+                                    <div class="card-content">
+                                        <div class="info info-horizontal">
+                                            <div class="icon icon-info">
+                                                <i class="material-icons">build</i>
+                                            </div>
+                                            <div class="description">
+                                                <h4 class="info-title">Inclusiones</h4>
+                                                <p class="description">
+                                                    Bienvenido al sitio web Inclusiones de la carrera de Ingenier&iacute;a en Computadores
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="info info-horizontal">
+                                            <div class="icon icon-success">
+
+                                                <i class="material-icons">assignment</i>
+
+                                            </div>
+                                            <div class="description">
+                                                <h4 class="info-title">Inclusiones</h4>
+                                                <p class="description">
+                                                    En esta aplicaci&oacute;n se realizan los tramites correspondientes a observar y editar las solicitudes de los estudiantes
+                                                    de RN.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="info info-horizontal">
+                                            <div class="icon icon-warning">
+                                                <i class="material-icons">https</i>
+                                            </div>
+                                            <div class="description">
+                                                <h4 class="info-title">Ingreso</h4>
+                                                <p class="description">
+                                                    Para acceder ingrese su dirección de correo electr&oacute;nico y contraseña
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+
+                                    <!-- <form class="form" method="" action=""> -->
+
+                                    <div class="card-content">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                            </span>
+                                            <input type="email" class="form-control" [(ngModel)]="email" placeholder="Correo electr&oacute;nico...">
+                                        </div>
+                                        <br/>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">work</i>
+                                            </span>
+                                            <select [(ngModel)]="service">
+                                                <option [ngValue]="0">Administracion</option>
+                                                <option [ngValue]="1">Comision</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">security</i>
+                                            </span>
+                                            <input type="password" id="password" [(ngModel)]="password" class="form-control" placeholder="Contraseña">
+                                        </div>
+                                        <!-- If you want to add a checkbox to this form, uncomment this code -->
+                                    </div>
+                                    <div class="footer text-center">
+                                        <button type="button" class="btn btn-info btn-fill" (click)='logIn()'>Ingresar</button>
+                                    </div>
+
+                                    <!-- </form> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <footer class="footer">
+                <div class="container">
+
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> Inclusiones
+                    </p>
+                </div>
+            </footer>
+            <div class="full-page-background" style="background-image: url(../../assets/img/login.jpg) "></div>
+        </div>
+    </div>
+
+</body>
+<!--   Core JS Files   -->
+<script src="../../assets/js/core/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/material.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<!-- Forms Validations Plugin -->
+<script src="../../assets/js/core/jquery.validate.min.js"></script>
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="../../assets/js/plugins/moment.min.js"></script>
+<!--  Charts Plugin -->
+<script src="../../assets/js/plugins/chartist.min.js"></script>
+<!--  Plugin for the Wizard -->
+<script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../../assets/js/plugins/bootstrap-notify.js"></script>
+<!-- DateTimePicker Plugin -->
+<script src="../../assets/js/plugins/bootstrap-datetimepicker.js"></script>
+<!-- Vector Map plugin -->
+<script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
+<!-- Sliders Plugin -->
+<script src="../../assets/js/plugins/nouislider.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<!-- Select Plugin -->
+<script src="../../assets/js/plugins/jquery.select-bootstrap.js"></script>
+<!--  DataTables.net Plugin    -->
+<script src="../../assets/js/plugins/jquery.datatables.js"></script>
+<!-- Sweet Alert 2 plugin -->
+<script src="../../assets/js/plugins/sweetalert2.min.js"></script>
+<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin    -->
+<script src="../../assets/js/plugins/fullcalendar.min.js"></script>
+<!-- TagsInput Plugin -->
+<script src="../../assets/js/plugins/jquery.tagsinput.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="../../assets/js/material-dashboard-angular.js"></script>
+<!-- Material Dashboard Init Off Canvas Menu -->
+<script src="../../assets/js/init/initMenu.js"></script>
+<!-- Sweet Alert 2 plugin -->
+<script src="../../assets/js/plugins/sweetalert2.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+        $('input').change(function () {
+
+            var empty = false;
+            $('input').each(function () {
+                if ($(this).val().length == 0) {
+                    empty = true;
+                }
+            });
+
+            if (empty) {
+                $('button').attr('disabled', 'disabled');
+            } else {
+                $('button').removeAttr('disabled');
+            }
+        });
+    });
+</script>
+
+</html>

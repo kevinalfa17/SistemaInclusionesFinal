@@ -1,0 +1,104 @@
+<div class="wrapper wrapper-full-page">
+    <div class="full-page register-page" filter-color="black" data-image="../assets/img/login.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="card card-signup">
+                        <h2 class="card-title text-center">Ingreso</h2>
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="card-content">
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-info">
+                                            <i class="material-icons">build</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Inclusiones</h4>
+                                            <p class="description">
+                                                Bienvenido al sitio web Inclusiones para estudiantes de la carrera de Ingenier&iacute;a en Computadores
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-success">
+
+                                            <i class="material-icons">assignment</i>
+
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Inclusiones</h4>
+                                            <p class="description">
+                                                En esta aplicaci&oacute;n se realizan los tramites correspondientes para levantar requisitos de matr&iacute;cula o condici&oacute;n
+                                                de RN.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-warning">
+                                            <i class="material-icons">https</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Ingreso</h4>
+                                            <p class="description">
+                                                Para acceder ingrese su n&uacute;mero de carn&eacute; y su dirección de correo electr&oacute;nico utilizado en el sistema
+                                                de matr&iacute;cula. Se enviar&aacute; un correo con una contrase&ntilde;a
+                                                de un solo uso que deber&aacute; ingresar en la siguiente p&aacute;gina.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+
+                                <form class="form" id="RegisterValidation" method="" (ngSubmit)="showTerms()">
+                                    <div class="card-content">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">
+                                                    <i class="material-icons">credit_card</i>
+                                                </i>
+                                            </span>
+
+
+
+                                            
+
+                                            <input type="text" class="form-control no-spinner" required="true" minlength="10" maxlength="10" onkeydown="javascript: return (event.keyCode == 46 || event.keyCode == 8 || (event.keyCode >= 35 && event.keyCode <= 40) || (event.keyCode >= 48 && event.keyCode <= 57) ||(event.keyCode >= 96 && event.keyCode <= 105))" [(ngModel)]="id"
+                                                name="id" id="id" placeholder="N&uacute;mero de carn&eacute;...">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                            </span>
+                                            <input type="text" class="form-control" name="email" type="email" required="true" [(ngModel)]="email" name="email" placeholder="Correo electr&oacute;nico...">
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="footer text-center">
+                                        <button type="submit" class="btn btn-info btn-fill">Enviar Contrase&ntilde;a</button>                                        
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    Inclusiones
+                </p>
+            </div>
+        </footer>
+        <div class="full-page-background" style="background-image: url(../assets/img/login.jpg) "></div>
+    </div>
+</div>

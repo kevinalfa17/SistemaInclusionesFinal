@@ -1,0 +1,263 @@
+<div class="main-content">
+    <div class="container">
+        <div class="header text-center">
+            <h3 class="title">Notificaciones</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">markunread_mailbox</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Inclusiones
+                            <br>
+                            <br>
+                        </p>
+                        <h3 class="card-title"> {{numberInclusions}} </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="numberInclusions > 0" class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            Hay pendientes
+                        </div>
+
+                        <div *ngIf="numberInclusions === 0" class="stats">
+                            <i class="material-icons text-success">done</i>
+                            No hay pendientes
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Levantamiento de requisitos</p>
+                        <h3 class="card-title">{{numberLiftingRequirements}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="numberLiftingRequirements > 0" class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            Hay pendientes
+                        </div>
+
+                        <div *ngIf="numberLiftingRequirements === 0" class="stats">
+                            <i class="material-icons text-success">done</i>
+                            No hay pendientes
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="dark">
+                        <i class="material-icons">description</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Levantamiento de requisitos RN</p>
+                        <h3 class="card-title">{{numberLiftingRequirementsRN}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="numberLiftingRequirementsRN > 0" class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            Hay pendientes
+                        </div>
+
+                        <div *ngIf="numberLiftingRequirementsRN === 0" class="stats">
+                            <i class="material-icons text-success">done</i>
+                            No hay pendientes
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                        <i class="material-icons">assignment_late</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Apelaciones recibidas</p>
+                        <h3 class="card-title">{{numberAppeals}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="numberAppeals > 0" class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            Hay pendientes
+                        </div>
+
+                        <div *ngIf="numberAppeals === 0" class="stats">
+                            <i class="material-icons text-success">done</i>
+                            No hay pendientes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-15 col-md-15">
+
+
+            <div class="card">
+
+
+                <div class="card-header card-header-tabs" data-background-color="blue">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <span class="nav-tabs-title">Notificaciones:</span>
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="active">
+                                    <a href="#inclusionsTab" data-toggle="tab">
+                                        <i class="material-icons">markunread_mailbox</i> Inclusiones
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#liftReqTab" data-toggle="tab">
+                                        <i class="material-icons">assignment</i> Requisitos
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#liftReqRNTab" data-toggle="tab">
+                                        <i class="material-icons">description</i> Rn
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#appealsTab" data-toggle="tab">
+                                        <i class="material-icons">assignment_late</i> Apelaciones
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card-content">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="inclusionsTab">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let request of listInclusions; let i = index">
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [checked]="request.leido" (change)="changeCheckboxData(request.id, !request.leido, request.tipo, i)">
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td> {{request.estudiante}} solicitó una inclusión en {{request.descripcion}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Revisar" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">remove_red_eye</i>
+                                            </button>
+
+                                            <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" (click)="deleteNotification(request.id, request.tipo, i)">
+                                                <i class="material-icons">close</i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="liftReqTab">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let request of listLiftingRequirements; let i = index">
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="request.leido" (change)="changeCheckboxData(request.id, !request.leido, request.tipo, i)">
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td> {{request.estudiante}} solicitó un levantamiento de requisitos en {{request.descripcion}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Revisar" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">remove_red_eye</i>
+                                            </button>
+
+                                            <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" (click)="deleteNotification(request.id, request.tipo, i)">
+                                                <i class="material-icons">close</i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                        <div class="tab-pane" id="liftReqRNTab">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let request of listLiftingRequirementsRN; let i = index">
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [checked]="request.leido" (change)="changeCheckboxData(request.id, !request.leido, request.tipo, i)">
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td> {{request.estudiante}} solicitó un levantamiento de requisitos RN en {{request.descripcion}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Revisar" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">remove_red_eye</i>
+                                            </button>
+
+                                            <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" (click)="deleteNotification(request.id, request.tipo, i)">
+                                                <i class="material-icons">close</i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="appealsTab">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let request of listAppeals; let i = index">
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [checked]="request.leido" (change)="changeCheckboxData(request.id, !request.leido, request.tipo, i)">
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td> {{request.estudiante}} realizó una apelacion sobre {{request.descripcion}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Revisar" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">remove_red_eye</i>
+                                            </button>
+
+                                            <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" (click)="deleteNotification(request.id, request.tipo, i)">
+                                                <i class="material-icons">close</i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

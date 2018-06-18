@@ -1,0 +1,162 @@
+<br/>
+<br/>
+<br/>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Detalles del levantamiento RN: {{requestDetails.id}}
+        </h4>
+    </div>
+    <div class="card-content">
+        <ul class="nav nav-pills nav-pills-info">
+            <li class="active">
+                <a href="#tab1" data-toggle="tab">Estudiante</a>
+            </li>
+            <li>
+                <a href="#tab2" data-toggle="tab">Solicitud</a>
+            </li>
+            <li>
+                <a href="#tab3" data-toggle="tab">Plan para semestre</a>
+            </li>
+            <li>
+                <a href="#tab4" data-toggle="tab">Área Académica</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del estudiante que solicita:</h3>
+                    <div class="card-content ">
+
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Fecha de envío:</strong> {{requestDetails.fecha_solicitud}} </h4>
+                        <h4>
+                            <strong>Nombre:</strong> {{studentDetails.primer_nombre}} {{studentDetails.segundo_nombre}} {{studentDetails.primer_apellido}}
+                            {{studentDetails.segundo_apellido}}
+                        </h4>
+                        <h4>
+                            <strong>Carné:</strong> {{studentDetails.carne}}</h4>
+                        <h4>
+                            <strong>Correo electrónico:</strong> {{studentDetails.correo_electronico}}</h4>
+                        <h4>
+                            <strong>Teléfono:</strong> {{requestDetails.telefono}}</h4>
+                        <h4>
+                            <strong>Teléfono fijo:</strong> {{requestDetails.telefono_fijo}}</h4>
+                        <h4>
+                            <strong>Promedio General:</strong> {{requestDetails.promedio_general}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab2">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del curso que solicita:</h3>
+                    <div class="card-content">
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Curso:</strong> {{cursoSolicitaDetails.codigo}} {{cursoSolicitaDetails.nombre}}</h4>
+                        <h4>
+                            <strong>Periodo:</strong> {{periodList.semestre}}S {{periodList.anno}}</h4>
+                        <h4>
+                            <strong>RN:</strong> {{requestDetails.numero_rn}}</h4>
+                        <br/>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Ver archivo adjunto:
+                            <strong>
+                                <a href="https://www.google.com"> Link!</a>
+                            </strong>
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3>
+                                    <strong>Carta:</strong>
+                                </h3>
+                                <p>{{requestDetails.carta}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab3">
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Lista de cursos a llevar en el presente semestre: </h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-blue">
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Nombre</th>
+                                        <th>Escuela</th>
+                                        <th>Créditos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of cursesDetails">
+                                        <td>
+                                            <strong> {{item.curso}} </strong>
+                                        </td>
+                                        <td>{{item.cursos.nombre}}</td>
+                                        <td>{{item.cursos.escuela}}</td>
+                                        <td>{{item.cursos.creditos}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab4">
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Información referente al proceso: </h3>
+                        <div class="table-responsive">
+                            <h4>
+                                <strong>Resultado del proceso:</strong> {{requestDetails.estado}}</h4>
+                            <h4>
+                                <strong>Procesado por:</strong> {{requestDetails.encargado_solicitud}}</h4>
+
+                            <h4>
+                                <strong>Requiere proceso en:</strong> {{requestDetails.requiere_proceso}}</h4>
+                            <h4>
+                                <strong>observacion_solicitud:</strong> {{requestDetails.observacion_solicitud}}</h4>
+                            <h4>
+                                <strong>Número de memorandum:</strong> {{requestDetails.memo_solicitud}}</h4>
+                            <h4>
+                                <strong>Número de sesión:</strong> {{requestDetails.sesion_solicitud}} </h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+    </div>
+    <div class="card-content">
+        <div align="center">
+            <button class="btn btn-info" (click)="navigateToParent()">VOLVER</button>
+        </div>
+
+    </div>

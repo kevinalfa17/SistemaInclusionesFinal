@@ -1,0 +1,40 @@
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="blue">
+            <i class="material-icons">work</i>
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">Registro de roles</h4>
+            <h5>
+                <strong> Lista de roles existentes </strong>
+            </h5>
+            <div>
+                <tr *ngFor="let r of dataServerUsersRoles; let i = index">
+                    <td>{{r.nombre}}</td>
+                </tr>
+            </div>
+            <h5>
+                <strong> Agregar un nuevo rol: </strong>
+            </h5>
+
+            <form id="RegisterValidation" (submit)="addNewRol();">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Nombre para el rol
+                        <span class="star">*</span>
+                    </label>
+                    <input class="form-control" name="nombre" [(ngModel)]="newRol.nombre" type="text" required="true" />
+                </div>
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Sistema del rol
+                        <span class="star">*</span>
+                    </label>
+                    <input class="form-control" name="sistema" [(ngModel)]="newRol.sistema" type="number" min="1" max="2" required="true" />
+                </div>
+
+                <div class="form-footer text-right">
+                    <button type="submit" class="btn btn-primary btn-fill">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,77 @@
+<div class="logo">
+    <div class="logo-normal">
+        <a href="#/admin/inicio" class="simple-text">
+            <br>
+            <br> TOOL Administrador
+        </a>
+    </div>
+
+    <div class="logo-img">
+        <img src="/assets/img/logo.png" />
+    </div>
+</div>
+
+
+<div class="sidebar-wrapper">
+
+    <div class="user">
+        <div class="photo">
+            <img src="../assets/img/faces/avatar.jpg" />
+        </div>
+
+
+        <div class="info">
+            <a>
+                <span>
+                    <!-- (Nombre Apellido) -->
+                    {{userInfo.nombre}}
+                </span>
+                <!-- <button type="button" class="btn btn-info btn-fill" (click)='deleteCookies()'>Ingresar</button> -->
+            </a>
+        </div>
+    </div>
+    <div class="nav-container">
+        <ul class="nav">
+
+            <!--INICIO-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[0].path]">
+                    <i class="material-icons">dashboard</i>
+                    <p>Inicio</p>
+                </a>
+            </li>
+
+            <!--INCLUSIONES-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[1].path]">
+                    <i class="material-icons">markunread_mailbox</i>
+                    <p>Inclusiones</p>
+                </a>
+            </li>
+
+            <!--Requisitos-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[2].path]">
+                    <i class="material-icons">assignment</i>
+                    <p>Levantamiento requisitos</p>
+                </a>
+            </li>
+
+            <!--RN-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[3].path]">
+                    <i class="material-icons">description</i>
+                    <p>Levantamiento RN</p>
+                </a>
+            </li>
+            <!--AP-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[4].path]">
+                    <i class="material-icons">assignment_late</i>
+                    <p>Apelaciones</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>

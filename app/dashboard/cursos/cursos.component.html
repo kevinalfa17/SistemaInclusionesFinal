@@ -1,0 +1,64 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">grid_on</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Cursos</h4>
+                        <div class="toolbar">
+                            <button class="btn btn-warning btn-round btn-sm" (click)="plan()">
+                                <i class="material-icons">school</i> Ver plan de estudios
+                            </button>
+
+                            <button class="btn btn-warning btn-round btn-sm" (click)="save()">
+                                <i class="material-icons">save</i> Guardar
+                            </button>
+
+                        </div>
+
+                        <div class="row" style="display:table">
+                            <div class="col-md-1" style="display:table-cell; float:none">
+                                <label>Curso</label>
+                            </div>
+                            <div class="col-md-3" style="display:table-cell; float:none">
+                                <div class="form-group label-floating">
+                                    <label class="control-label"></label>
+
+                                    <select [(ngModel)]="selectedCourse" class="form-control">
+                                        <option *ngFor="let course of courses; let i = index" [value]="i">
+                                            {{course.nombre}}
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2" style="display:table-cell; float:none">
+                                <button class="btn btn-success" (click)="addCourse()">A&ntilde;adir
+                                    <div class="ripple-container"></div>
+                                </button>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
+
+                        <div class="row" *ngIf="data.length">
+                            <table-cmp [data]="data" [structure]="structure"></table-cmp>
+                        </div>
+
+                        <div class="row" *ngIf="!data.length">
+                            <h4 style="text-align:center">No hay cursos añadidos al plan</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

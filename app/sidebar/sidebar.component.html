@@ -1,0 +1,110 @@
+<div class="logo">
+    <div class="logo-normal">
+        <a href="https://www.creative-tim.com" class="simple-text">
+            Inclusiones
+        </a>
+    </div>
+
+    <div class="logo-img">
+        <img src="/assets/img/logo.png" />
+    </div>
+</div>
+
+
+<div class="sidebar-wrapper">
+
+    <div class="user">
+        <div class="photo">
+            <img src="../assets/img/faces/avatar.jpg" />
+        </div>
+        <div class="info">
+            <a>
+                <span>
+                    {{name}}
+
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="nav-container">
+        <ul class="nav">
+
+            <!--INICIO-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[0].path]">
+                    <i class="material-icons">dashboard</i>
+                    <p>Inicio</p>
+                </a>
+            </li>
+
+            <!--CURSOS-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[1].path]">
+                    <i class="material-icons">grid_on</i>
+                    <p>Plan Cursos</p>
+                </a>
+            </li>
+
+            <!--FORMULARIOS-->
+            <li routerLinkActive="active">
+                <a data-toggle="collapse" href="#formsExamples">
+                    <i class="material-icons">content_paste</i>
+                    <p>Formularios
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="formsExamples">
+                    <ul class="nav">
+                        <li routerLinkActive="active">
+                            <a [routerLink]="[menuItems[2].path]">
+                                <span class="sidebar-mini">REQ</span>
+                                <span class="sidebar-normal">Levantamiento Requisitos</span>
+                            </a>
+                        </li>
+                        <li routerLinkActive="active">
+                            <a [routerLink]="[menuItems[3].path]">
+                                <span class="sidebar-mini">RN</span>
+                                <span class="sidebar-normal">Levantamiento RN</span>
+                            </a>
+                        </li>
+                        <li routerLinkActive="active">
+                            <a [routerLink]="[menuItems[4].path]">
+                                <span class="sidebar-mini">INC</span>
+                                <span class="sidebar-normal">Inclusiones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!--Solicitudes-->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[5].path]">
+                    <i class="material-icons">assignment</i>
+                    <p>Historial de Solicitudes</p>
+                </a>
+            </li>
+            <!-- Apelaciones -->
+            <li routerLinkActive="active">
+                <a [routerLink]="[menuItems[7].path]">
+                    <i class="material-icons">call_missed_outgoing</i>
+                    <p>Apelaciones</p>
+                </a>
+            </li>
+
+            <!-- Logout -->
+            <li routerLinkActive="active">
+                <a (click)="logout()">
+                    <i class="material-icons">exit_to_app</i>
+                    <p>Logout</p>
+                </a>
+            </li>
+
+
+
+
+
+
+        </ul>
+    </div>
+
+</div>

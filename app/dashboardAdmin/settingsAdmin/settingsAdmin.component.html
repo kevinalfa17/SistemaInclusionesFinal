@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">today</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Fecha de inicio del servicio</h4>
+                        <div class="form-group">
+                            <label class="label-control"> Seleccione la fecha y hora: </label>
+                            <input id="initial" name="initial" [(ngModel)]="initial" type="text" class="form-control datetimepicker" value="01/12/2018 10:00"
+                            />
+                        </div>
+
+                        <div align="center">
+                            <button class="btn btn-warning btn-block" id="initFlag" name="initFlag" value="false" (click)="checkChanges('initFlag')">Cambiar </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">today</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Fecha límite de recepción de solicitudes</h4>
+                        <div class="form-group">
+                            <label class="label-control"> Seleccione la fecha y hora: </label>
+                            <input id="inter" name="inter" [(ngModel)]="inter" type="text" class="form-control datetimepicker" value="01/12/2018 10:00"
+                            />
+                        </div>
+
+                        <div align="center">
+                            <button class="btn btn-warning btn-block" id="interFlag" name="interFlag" value="false" (click)="checkChanges('interFlag')">Cambiar </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">today</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Fecha de cierre del servicio</h4>
+                        <div class="form-group">
+                            <label class="label-control"> Seleccione la fecha y hora: </label>
+                            <input id="final" name="final" [(ngModel)]="final" type="text" class="form-control datetimepicker" value="01/12/2018 10:00"
+                            />
+                        </div>
+
+                        <div align="center">
+                            <button class="btn btn-warning btn-block" id="finFlag" name="finFlag" value="false" (click)="checkChanges('finFlag')">Cambiar </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-md-offset-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">today</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Periodo</h4>
+
+                        <div class="form-group">
+                            <label class="label-control"> Seleccione el periodo: </label>
+                            <input id="periodo" name="periodo_sem" [(ngModel)]="periodo.semestre" type="number" min="1" max="2" />
+                        </div>
+                        <div class="form-group">
+                            <label class="label-control"> Seleccione el año: </label>
+                            <input id="periodo" name="periodo_ano" [(ngModel)]="periodo.anno" type="text" />
+                        </div>
+
+                        <div align="center">
+                            <button class="btn btn-warning btn-block" id="periodo" name="periodo" value="false" (click)="checkChanges('periodo')">Cambiar </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

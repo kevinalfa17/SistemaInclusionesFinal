@@ -1,0 +1,211 @@
+<br/>
+<br/>
+<br/>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Detalles del levantamiento RN: {{requestDetails.id}}
+            <strong> {{studentDetails.primer_nombre}} {{studentDetails.segundo_nombre}} {{studentDetails.primer_apellido}} {{studentDetails.segundo_apellido}},
+                {{studentDetails.carne}}.
+            </strong>
+        </h4>
+    </div>
+    <div class="card-content">
+        <ul class="nav nav-pills nav-pills-info">
+            <li class="active">
+                <a href="#tab1" data-toggle="tab">Estudiante</a>
+            </li>
+            <li>
+                <a href="#tab2" data-toggle="tab">Solicitud</a>
+            </li>
+            <li>
+                <a href="#tab3" data-toggle="tab">Plan para semestre</a>
+            </li>
+            <li>
+                <a href="#tab4" data-toggle="tab">Área Académica</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del estudiante que solicita:</h3>
+                    <div class="card-content ">
+
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Fecha de envío:</strong> {{requestDetails.fecha_solicitud}} </h4>
+                        <h4>
+                            <strong>Nombre:</strong> {{studentDetails.primer_nombre}} {{studentDetails.segundo_nombre}} {{studentDetails.primer_apellido}}
+                            {{studentDetails.segundo_apellido}}
+                        </h4>
+                        <h4>
+                            <strong>Carné:</strong> {{studentDetails.carne}}</h4>
+                        <h4>
+                            <strong>Correo electrónico:</strong> {{studentDetails.correo_electronico}}</h4>
+                        <h4>
+                            <strong>Teléfono:</strong> {{requestDetails.telefono}}</h4>
+                        <h4>
+                            <strong>Teléfono fijo:</strong> {{requestDetails.telefono_fijo}}</h4>
+                        <h4>
+                            <strong>Promedio general:</strong> {{requestDetails.promedio_general}}</h4>
+                        <h4>
+                            <strong>Promedio general anterior:</strong> {{requestDetails.promedio_general_anterior}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab2">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title">Datos del curso que solicita:</h3>
+                    <div class="card-content">
+                        <br />
+                        <br />
+                        <h4>
+                            <strong>Curso:</strong> {{cursoSolicitaDetails.codigo}} {{cursoSolicitaDetails.nombre}}</h4>
+                        <h4>
+                            <strong>Periodo:</strong> {{periodList.semestre}}S {{periodList.anno}}</h4>
+                        <h4>
+                            <strong>RN:</strong> {{requestDetails.numero_rn}}</h4>
+                        <br/>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Ver archivo adjunto:
+                            <strong>
+                                <a href="https://www.google.com"> Link!</a>
+                            </strong>
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3>
+                                    <strong>Carta:</strong>
+                                </h3>
+                                <p>{{requestDetails.carta}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab3">
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"> Lista de cursos a llevar en el presente semestre: </h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-blue">
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Nombre</th>
+                                        <th>Escuela</th>
+                                        <th>Créditos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of cursesDetails">
+                                        <td>
+                                            <strong> {{item.curso}} </strong>
+                                        </td>
+                                        <td>{{item.cursos.nombre}}</td>
+                                        <td>{{item.cursos.escuela}}</td>
+                                        <td>{{item.cursos.creditos}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab4">
+
+
+
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h3 class="card-title"> Edición del proceso: </h3>
+
+                    <div class="col-md-5 col-md-offset-3">
+                        <!-- <div class="col-md-5 col-md-offset-3"><
+                                    <div class="col-md-6 col-md-offset-3 text-center"> <div class="alert alert-info"> -->
+                        <div class="card">
+
+                            <div class="card-content">
+                                <form method="#" action="#" (submit)="updateData()">
+                                    <div class="form-group label-floating">
+                                        <select class="selectpicker" data-style="btn btn-primary btn-round" [(ngModel)]="requestDetails.estado" name="state">
+                                            <option disabled selected>Seleccione el estado</option>
+                                            <option *ngFor="let stat of statusList" [value]="stat.descripcion">{{stat.descripcion}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <select class="selectpicker" data-style="btn btn-primary btn-round" [(ngModel)]="requestDetails.encargado_solicitud" name="revBy">
+                                            <option disabled selected>Seleccione quién revisa</option>
+                                            <option *ngFor="let stat of rolesList" [value]="stat.name">{{stat.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong> Requiere proceso en </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="requestDetails.requiere_proceso" name="reqP">
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong>observacion_solicitud </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="requestDetails.observacion_solicitud" name="obse">
+                                    </div>
+
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong>Número de memorandum </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="requestDetails.memo_solicitud" name="memo">
+                                    </div>
+
+                                    <div class="form-group label-floating">
+                                        <label>
+                                            <h4>
+                                                <strong>Número de sesión </strong>
+                                            </h4>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="requestDetails.sesion_solicitud" name="sesion_solicitud">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-fill btn-success">Realizar Cambios</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br/>
+            <br/>
+
+        </div>
+        <div class="card-content">
+            <div align="center">
+                <button class="btn btn-info" (click)="navigateToParent()">VOLVER</button>
+            </div>
+
+        </div>

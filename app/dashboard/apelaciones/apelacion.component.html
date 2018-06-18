@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">outlined_flag</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Observaciones</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+
+                        <button class="btn btn-warning btn-round" (click)="goForm();">
+                            <i class="material-icons">description</i> Ver formulario
+                        </button>
+
+                        <h5>Se han realizado las siguientes observaciones sobre su solicitud:</h5>
+
+                        <textarea disabled [(ngModel)]="observations" name="observaciones" style="width:100%; height: 200px; max-width: 100%; min-width: 100%; min-height: 100px; max-height: 500px"></textarea>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="blue">
+                        <i class="material-icons">outlined_flag</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Apelacion</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+
+                        <h5>Por favor detalle los motivos de su apelación:</h5>
+
+                        <textarea [(ngModel)]="apelacion" name="apelacion" style="width:100%; height: 200px; max-width: 100%; min-width: 100%; min-height: 100px; max-height: 500px"></textarea>
+
+                        <button class="btn btn-success  pull-right" (click)="apelar()">
+                            <i class="material-icons">send</i>Apelar
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
