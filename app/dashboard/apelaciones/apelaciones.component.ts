@@ -36,7 +36,7 @@ export class ApelacionesComponent implements OnInit {
         this.structure = { columns: [{ name: "N°", type: "number", min: 0, max: 100000, editable: false }, { name: "Formulario", type: "text", editable: false }, { name: "Fecha", type: "date", editable: false }, { name: "", type: "link", linkText: "Apelar", editable: false }], header: true, footer: false, edit: false, delete: true };
         this.structure2 = { columns: [{ name: "N°", type: "number", min: 0, max: 100000, editable: false }, { name: "Formulario", type: "text", editable: false }, { name: "Fecha", type: "text", editable: false }, { name: "Estado", type: "text", editable: false }], header: true, footer: false, edit: false, delete: false };
 
-        this.requestService.getInclusion(Cookie.get("Carne")).subscribe(
+        this.requestService.getInclusion(Cookie.get("carne")).subscribe(
             data => {
 
                 console.log("data1")
@@ -46,7 +46,7 @@ export class ApelacionesComponent implements OnInit {
             }),
             err => console.log("Error", err);
 
-        this.requestService.getRequirements(Cookie.get("Carne")).subscribe(
+        this.requestService.getRequirements(Cookie.get("carne")).subscribe(
             data => {
                 console.log("data2")
                 console.log(data);
@@ -55,7 +55,7 @@ export class ApelacionesComponent implements OnInit {
             }),
             err => console.log("Error", err);
 
-        this.requestService.getRn(Cookie.get("Carne")).subscribe(
+        this.requestService.getRn(Cookie.get("carne")).subscribe(
             data => {
                 console.log("data3")
                 console.log(data);

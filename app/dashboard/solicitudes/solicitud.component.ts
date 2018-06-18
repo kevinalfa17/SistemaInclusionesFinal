@@ -118,6 +118,7 @@ export class SolicitudComponent implements OnInit {
                         for (var i = 0; i < this.courses.length; i++) {
                             if (this.courses[i].codigo == this.cursoLevantar) {
                                 this.course = i;
+                                this.creditosLevantar = this.courses[i].creditos;                                
                             }
                         }
 
@@ -128,6 +129,7 @@ export class SolicitudComponent implements OnInit {
                 this.requestService.getSpecificRequirement(this.id).subscribe(
 
                     data => {
+                        console.log("data"+data)
 
                         this.phone = data["telefono"];
                         this.telephone = data["telefono_fijo"];
@@ -137,12 +139,28 @@ export class SolicitudComponent implements OnInit {
                         this.cursoMatricular = data["curso_matricular"];
                         this.letter = data["carta"];
 
+                        console.log("reqqqqqq")
+                        console.log("l"+ this.cursoLevantar)
+                        console.log("m" + this.cursoMatricular)
+
                         for (var i = 0; i < this.courses.length; i++) {
                             if (this.courses[i].codigo == this.cursoLevantar) {
+                                console.log("lev")
+                                
                                 this.selectLevantar = i;
+                                this.creditosLevantar = this.courses[i].creditos;
+
+                                console.log(this.selectLevantar)
+                                
+                                
                             }
                             if (this.courses[i].codigo == this.cursoMatricular) {
+                                console.log("matr")
+                                
                                 this.selectMatricular = i;
+                                this.creditosMatricular = this.courses[i].creditos;
+                                console.log(this.selectMatricular)
+                                
                             }
                         }
                     }),
@@ -151,17 +169,23 @@ export class SolicitudComponent implements OnInit {
             case "rn":
                 this.requestService.getSpecificRn(this.id).subscribe(
                     data => {
+
+                        console.log(JSON.stringify(data))
                         this.phone = data["telefono"];
                         this.telephone = data["telefono_fijo"];
                         this.score = data["promedio_general"];
                         this.previousScore = data["promedio_semestre_anterior"];
-                        this.cursoLevantar = data["curso_levantar"];
+                        this.cursoLevantar = data["curso"];
+                        console.log("curso levantar "+this.cursoLevantar)
                         this.letter = data["carta"];
                         this.rn = data["rn"];
 
                         for (var i = 0; i < this.courses.length; i++) {
                             if (this.courses[i].codigo == this.cursoLevantar) {
                                 this.selectLevantar = i;
+                                this.creditosLevantar = this.courses[i].creditos;
+                                console.log("select levantar "+this.selectLevantar)
+                                
                             }
                         }
                     }),
@@ -207,30 +231,31 @@ export class SolicitudComponent implements OnInit {
     }
 
     send() {
+
+        console.log("SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEND")
+        console.log(this.type)
         var correct = true;
 
         switch (this.type) {
             case "inc":
+            console.log("false aqui")
 
                 if (this.professor == null || this.group == null || this.phone == null || this.telephone == null ||
                     this.score == null || this.enroll_date == null || this.course == null) {
+                        console.log("false aqui12312312")
                     correct = false;
 
                 }
 
-
-                if ((this.check1 || this.check2 || this.check3)) {
-                    if (this.previousScore == null || ((this.check1 || this.check2) && this.cursoRequisitos == null)
-                        || (this.check3 && this.cursoRN == null))
-                        correct = false;
-                }
                 break;
             case "req":
+            console.log("false aqui2")
                 correct = !(this.telephone == null ||this.phone == null  || this.score == null || this.previousScore == null ||
                     this.selectLevantar == null);
 
                 break;
             case "rn":
+            console.log("false aqui3")
                 correct = !(this.telephone == null || this.phone == null || this.score == null || this.previousScore == null
                     || this.selectLevantar == null || this.rn == null)
                 break;

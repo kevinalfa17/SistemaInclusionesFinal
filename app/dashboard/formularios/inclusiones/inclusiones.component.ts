@@ -246,6 +246,10 @@ export class InclusionesComponent implements OnInit {
 
         //Levantamiento de requisito
         if (this.check1 || this.check2) {
+
+            console.log("req check")
+            console.log(this.cursoLevantar2)
+            console.log(this.cursoLevantar)
             var request2 = {
                 "correo_electronico": Cookie.get("correo"),
                 "telefono": this.phone,
@@ -261,9 +265,9 @@ export class InclusionesComponent implements OnInit {
                 "carta": this.letter,
             }
 
-            console.log("request" + JSON.stringify(request))
+            console.log("request" + JSON.stringify(request2))
 
-            this.requestService.sendRequirements(request).subscribe(
+            this.requestService.sendRequirements(request2).subscribe(
                 data => {
                     console.log(data);
                     swal.close();

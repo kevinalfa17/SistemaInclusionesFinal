@@ -19,6 +19,7 @@ var TableComponent = (function () {
         this._iterableDiffers = _iterableDiffers;
         this.valueChange = new core_1.EventEmitter();
         this.deleted = new core_1.EventEmitter();
+        this.created = new core_1.EventEmitter();
         this.valueChange2 = new core_1.EventEmitter();
         this.order = {};
         this.searchEnable = false;
@@ -252,6 +253,7 @@ var TableComponent = (function () {
     TableComponent.prototype.save = function () {
         this.createEnabled = false;
         this.data.push(this.createdRow);
+        this.deleted.emit(true);
         //Push in data
     };
     TableComponent.prototype.cancel = function () {
@@ -275,6 +277,10 @@ var TableComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], TableComponent.prototype, "deleted", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TableComponent.prototype, "created", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)

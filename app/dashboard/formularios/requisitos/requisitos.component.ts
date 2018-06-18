@@ -148,6 +148,8 @@ export class RequisitosComponent implements OnInit {
             console.log(date)
         }
 
+        console.log("correo" + Cookie.get("correo"))
+
         var request = {
             "correo_electronico": Cookie.get("correo"),
             "telefono": this.phone,

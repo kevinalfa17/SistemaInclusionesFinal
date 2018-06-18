@@ -37,7 +37,8 @@ export class TableComponent implements OnInit, DoCheck {
     @Input() data: any;        //List of rows (arrays) with all data
 
     @Output() valueChange = new EventEmitter();
-    @Output() deleted = new EventEmitter<Number>();
+    @Output() deleted = new EventEmitter<Boolean>();
+    @Output() created = new EventEmitter<Number>();
     @Output() valueChange2 = new EventEmitter();
 
 
@@ -317,12 +318,12 @@ export class TableComponent implements OnInit, DoCheck {
 
     create(){
         this.createEnabled = true;
-
     }
 
     save(){
         this.createEnabled = false;
         this.data.push(this.createdRow);
+        this.deleted.emit(true);
         //Push in data
 
     }

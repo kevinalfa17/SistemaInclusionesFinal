@@ -121,6 +121,7 @@ var RequisitosComponent = (function () {
             date = this.datePipe.transform(tempDate, 'yyyy-MM-dd');
             console.log(date);
         }
+        console.log("correo" + ng2_cookies_1.Cookie.get("correo"));
         var request = {
             "correo_electronico": ng2_cookies_1.Cookie.get("correo"),
             "telefono": this.phone,

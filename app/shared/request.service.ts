@@ -66,6 +66,8 @@ export class RequestService {
     }
 
     getRequirements(id){
+        console.log("grequirements")
+        console.log(this.service1 + '/ce/SkipRequirements/Student?student='+id)
         return this.http.get(this.service1 + '/ce/SkipRequirements/Student?student='+id).map((res: Response) => res.json());
     }
 

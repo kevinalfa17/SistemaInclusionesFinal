@@ -57,6 +57,8 @@ var RequestService = (function () {
         return this.http.get(this.service1 + '/ce/Inclusions/Student?student=' + id).map(function (res) { return res.json(); });
     };
     RequestService.prototype.getRequirements = function (id) {
+        console.log("grequirements");
+        console.log(this.service1 + '/ce/SkipRequirements/Student?student=' + id);
         return this.http.get(this.service1 + '/ce/SkipRequirements/Student?student=' + id).map(function (res) { return res.json(); });
     };
     RequestService.prototype.getRn = function (id) {

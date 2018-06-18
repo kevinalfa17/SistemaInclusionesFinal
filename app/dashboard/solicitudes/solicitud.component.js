@@ -93,6 +93,7 @@ var SolicitudComponent = (function () {
                     for (var i = 0; i < _this.courses.length; i++) {
                         if (_this.courses[i].codigo == _this.cursoLevantar) {
                             _this.course = i;
+                            _this.creditosLevantar = _this.courses[i].creditos;
                         }
                     }
                 }),
@@ -100,6 +101,7 @@ var SolicitudComponent = (function () {
                 break;
             case "req":
                 this.requestService.getSpecificRequirement(this.id).subscribe(function (data) {
+                    console.log("data" + data);
                     _this.phone = data["telefono"];
                     _this.telephone = data["telefono_fijo"];
                     _this.score = data["promedio_general"];
@@ -107,12 +109,21 @@ var SolicitudComponent = (function () {
                     _this.cursoLevantar = data["curso_levantar"];
                     _this.cursoMatricular = data["curso_matricular"];
                     _this.letter = data["carta"];
+                    console.log("reqqqqqq");
+                    console.log("l" + _this.cursoLevantar);
+                    console.log("m" + _this.cursoMatricular);
                     for (var i = 0; i < _this.courses.length; i++) {
                         if (_this.courses[i].codigo == _this.cursoLevantar) {
+                            console.log("lev");
                             _this.selectLevantar = i;
+                            _this.creditosLevantar = _this.courses[i].creditos;
+                            console.log(_this.selectLevantar);
                         }
                         if (_this.courses[i].codigo == _this.cursoMatricular) {
+                            console.log("matr");
                             _this.selectMatricular = i;
+                            _this.creditosMatricular = _this.courses[i].creditos;
+                            console.log(_this.selectMatricular);
                         }
                     }
                 }),
@@ -120,16 +131,20 @@ var SolicitudComponent = (function () {
                 break;
             case "rn":
                 this.requestService.getSpecificRn(this.id).subscribe(function (data) {
+                    console.log(JSON.stringify(data));
                     _this.phone = data["telefono"];
                     _this.telephone = data["telefono_fijo"];
                     _this.score = data["promedio_general"];
                     _this.previousScore = data["promedio_semestre_anterior"];
-                    _this.cursoLevantar = data["curso_levantar"];
+                    _this.cursoLevantar = data["curso"];
+                    console.log("curso levantar " + _this.cursoLevantar);
                     _this.letter = data["carta"];
                     _this.rn = data["rn"];
                     for (var i = 0; i < _this.courses.length; i++) {
                         if (_this.courses[i].codigo == _this.cursoLevantar) {
                             _this.selectLevantar = i;
+                            _this.creditosLevantar = _this.courses[i].creditos;
+                            console.log("select levantar " + _this.selectLevantar);
                         }
                     }
                 }),
@@ -163,24 +178,25 @@ var SolicitudComponent = (function () {
     };
     SolicitudComponent.prototype.send = function () {
         var _this = this;
+        console.log("SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEND");
+        console.log(this.type);
         var correct = true;
         switch (this.type) {
             case "inc":
+                console.log("false aqui");
                 if (this.professor == null || this.group == null || this.phone == null || this.telephone == null ||
                     this.score == null || this.enroll_date == null || this.course == null) {
+                    console.log("false aqui12312312");
                     correct = false;
-                }
-                if ((this.check1 || this.check2 || this.check3)) {
-                    if (this.previousScore == null || ((this.check1 || this.check2) && this.cursoRequisitos == null)
-                        || (this.check3 && this.cursoRN == null))
-                        correct = false;
                 }
                 break;
             case "req":
+                console.log("false aqui2");
                 correct = !(this.telephone == null || this.phone == null || this.score == null || this.previousScore == null ||
                     this.selectLevantar == null);
                 break;
             case "rn":
+                console.log("false aqui3");
                 correct = !(this.telephone == null || this.phone == null || this.score == null || this.previousScore == null
                     || this.selectLevantar == null || this.rn == null);
                 break;

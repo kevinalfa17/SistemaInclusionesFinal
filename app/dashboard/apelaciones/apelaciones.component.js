@@ -32,19 +32,19 @@ var ApelacionesComponent = (function () {
         var _this = this;
         this.structure = { columns: [{ name: "N°", type: "number", min: 0, max: 100000, editable: false }, { name: "Formulario", type: "text", editable: false }, { name: "Fecha", type: "date", editable: false }, { name: "", type: "link", linkText: "Apelar", editable: false }], header: true, footer: false, edit: false, delete: true };
         this.structure2 = { columns: [{ name: "N°", type: "number", min: 0, max: 100000, editable: false }, { name: "Formulario", type: "text", editable: false }, { name: "Fecha", type: "text", editable: false }, { name: "Estado", type: "text", editable: false }], header: true, footer: false, edit: false, delete: false };
-        this.requestService.getInclusion(ng2_cookies_1.Cookie.get("Carne")).subscribe(function (data) {
+        this.requestService.getInclusion(ng2_cookies_1.Cookie.get("carne")).subscribe(function (data) {
             console.log("data1");
             console.log(data);
             _this.fillData(data, "inc");
         }),
             function (err) { return console.log("Error", err); };
-        this.requestService.getRequirements(ng2_cookies_1.Cookie.get("Carne")).subscribe(function (data) {
+        this.requestService.getRequirements(ng2_cookies_1.Cookie.get("carne")).subscribe(function (data) {
             console.log("data2");
             console.log(data);
             _this.fillData(data, "req");
         }),
             function (err) { return console.log("Error", err); };
-        this.requestService.getRn(ng2_cookies_1.Cookie.get("Carne")).subscribe(function (data) {
+        this.requestService.getRn(ng2_cookies_1.Cookie.get("carne")).subscribe(function (data) {
             console.log("data3");
             console.log(data);
             _this.fillData(data, "rn");

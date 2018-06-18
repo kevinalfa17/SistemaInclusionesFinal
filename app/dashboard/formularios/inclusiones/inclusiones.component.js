@@ -195,6 +195,9 @@ var InclusionesComponent = (function () {
             function (err) { return console.log("Error", err); };
         //Levantamiento de requisito
         if (this.check1 || this.check2) {
+            console.log("req check");
+            console.log(this.cursoLevantar2);
+            console.log(this.cursoLevantar);
             var request2 = {
                 "correo_electronico": ng2_cookies_1.Cookie.get("correo"),
                 "telefono": this.phone,
@@ -209,8 +212,8 @@ var InclusionesComponent = (function () {
                 "estado_solicitud": state,
                 "carta": this.letter,
             };
-            console.log("request" + JSON.stringify(request));
-            this.requestService.sendRequirements(request).subscribe(function (data) {
+            console.log("request" + JSON.stringify(request2));
+            this.requestService.sendRequirements(request2).subscribe(function (data) {
                 console.log(data);
                 swal.close();
                 if (true) {
