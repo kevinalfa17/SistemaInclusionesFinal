@@ -67,7 +67,8 @@ export class TableEstudiantesComponent implements OnInit {
         console.log("Hay q importar");
     }
 
-    addNewStudent(){
+    onCreate(){
+        console.log(this.data[this.data.length]);
 
     }
 }
