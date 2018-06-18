@@ -25,6 +25,7 @@ var TableLevantamientoComponent = (function () {
             resp) {
             _this.dataServerRequest = resp; // assign to the local object
             console.log(resp);
+            console.log('getetet');
             _this._cursesService.getAll().subscribe(// get the details
             function (// get the details
                 resp2) {

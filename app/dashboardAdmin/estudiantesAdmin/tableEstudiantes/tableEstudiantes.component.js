@@ -25,14 +25,10 @@ var TableEstudiantesComponent = (function () {
                 { name: "Segundo apellido", type: "text", editable: true },
                 { name: "Correo", type: "text", editable: true },
             ],
-            header: true, footer: false, edit: false, delete: true
+            header: true, footer: false, edit: false, delete: true, create: true, search: true
         };
         this.data = [[]
         ];
-        // {
-        //     "carne": 47, "primer_nombre": "toto", "segundo_nombre": "", "primer_apellido": "cuco", "segundo_apellido": "lolo",
-        //     "correo_electronico": "gb3@gmail.com", "carrera": 1
-        // }
         this._studentsService.getAll().subscribe(// get the details
         function (// get the details
             resp) {
@@ -50,6 +46,8 @@ var TableEstudiantesComponent = (function () {
     };
     TableEstudiantesComponent.prototype.importStudents = function () {
         console.log("Hay q importar");
+    };
+    TableEstudiantesComponent.prototype.addNewStudent = function () {
     };
     TableEstudiantesComponent = __decorate([
         core_1.Component({

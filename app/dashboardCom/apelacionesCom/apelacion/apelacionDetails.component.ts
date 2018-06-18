@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppealsService } from '../../services/appeals.service';
 import { StudentsService } from '../../services/students.service';
 import { SettingsService } from '../../services/settings.service';
-import { UsersService } from '../../services/users.service'; // private _usersService: UsersService
+import { UsersService } from '../../services/users.service';
+import { NotificationsService } from '../../services/notifications.service'; // private _notifications: NotificationsService
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 declare var $: any;
 declare var swal: any;
@@ -12,7 +14,7 @@ declare var swal: any;
     moduleId: module.id,
     selector: 'details-Inclusion-Com-cmp',
     templateUrl: 'apelacionDetails.component.html',
-    providers: [AppealsService, StudentsService, SettingsService, UsersService] // the provider of apelacion
+    providers: [AppealsService, StudentsService, SettingsService, UsersService, NotificationsService] // the provider of apelacion
 })
 
 export class ApelacionDetailsComComponent implements OnInit, OnDestroy {
@@ -27,7 +29,7 @@ export class ApelacionDetailsComComponent implements OnInit, OnDestroy {
     private apelacionTipo: any;
 
     constructor(private _route: ActivatedRoute, private _router: Router, private _requestService: AppealsService,
-        private _studentsService: StudentsService, private _settingsService: SettingsService, private _usersService: UsersService) { }
+        private _studentsService: StudentsService, private _settingsService: SettingsService, private _usersService: UsersService, private _notifications: NotificationsService) { }
 
     ngOnInit(): any {
 
@@ -123,7 +125,7 @@ export class ApelacionDetailsComComponent implements OnInit, OnDestroy {
 
         var req = {
             "estado_apelacion": this.requestDetails.estado_apelacion, "memo_apelacion": this.requestDetails.memo_solicitud, "sesion_apelacion": this.requestDetails.sesion_solicitud,
-            "encargado_apelacion": 1, "observacion_apelacion": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
+            "encargado_apelacion": Cookie.get('idUser'), "observacion_apelacion": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
         };
         // console.log("upppupupupup");
         // console.log(req);
@@ -131,6 +133,18 @@ export class ApelacionDetailsComComponent implements OnInit, OnDestroy {
             resp => {
                 console.log(resp);
                 if (resp == 'Objeto cambiado') {
+
+                    var obj = {
+                        "visto": false,
+                        "tipo": "Mensaje del Sistema CE con respecta a una apelación", // asunto
+                        "fecha": new Date(),
+                        "correo_electronico": this.requestDetails.correo_electronico, // correo al q le voy a mandar
+                        "descripcion": "Su apelación respecto a "+this.apelacionTipo+" ha sido modificada, el estado es "+ req.estado_apelacion// cuerpo
+                    };
+
+                    this._notifications.createEmail(obj).subscribe(resp => {
+                        console.log(resp);
+                    });
 
                     swal({
                         title: 'Mensaje',

@@ -53,6 +53,9 @@ var UsersService = (function () {
     UsersService.prototype.getByID = function (id) {
         return this._http.get(this._Server.directionUsers + 'ce/Users/' + id).map(function (res) { return res.json(); }).catch(this._Server.handleError);
     };
+    UsersService.prototype.editData = function (id, req) {
+        return this._http.put(this._Server.directionUsers + 'ce/Users/' + id, req).map(function (res) { return res.json(); }).catch(this._Server.handleError);
+    };
     /**
      *  Check all the types of roles
      */

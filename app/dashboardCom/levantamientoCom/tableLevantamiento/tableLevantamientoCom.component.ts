@@ -26,6 +26,9 @@ export class TableLevantamientoComComponent implements OnInit {
             resp => {
                 this.dataServerRequest = resp; // assign to the local object
 
+                console.log(resp);
+                console.log('getetet');
+
                 this._cursesService.getAll().subscribe(  // get the details
                     resp2 => {
                         this.dataServerCurses = resp2; // assign to the local object

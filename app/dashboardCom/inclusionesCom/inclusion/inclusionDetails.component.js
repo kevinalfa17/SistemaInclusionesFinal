@@ -16,8 +16,10 @@ var curses_service_1 = require('../../services/curses.service');
 var students_service_1 = require('../../services/students.service');
 var users_service_1 = require('../../services/users.service');
 var settings_service_1 = require('../../services/settings.service');
+var notifications_service_1 = require('../../services/notifications.service'); // private _notifications: NotificationsService
+var ng2_cookies_1 = require('ng2-cookies/ng2-cookies');
 var InclusionesDetailsComComponent = (function () {
-    function InclusionesDetailsComComponent(_route, _location, _inclusionService, _cursesService, _studentsService, _usersService, _settingsService) {
+    function InclusionesDetailsComComponent(_route, _location, _inclusionService, _cursesService, _studentsService, _usersService, _settingsService, _notifications) {
         this._route = _route;
         this._location = _location;
         this._inclusionService = _inclusionService;
@@ -25,6 +27,7 @@ var InclusionesDetailsComComponent = (function () {
         this._studentsService = _studentsService;
         this._usersService = _usersService;
         this._settingsService = _settingsService;
+        this._notifications = _notifications;
         this.cursesDetails = []; // Details of the curses of the current semester
         this.allSchools = []; // Details of the curses of the current semester
     }
@@ -106,6 +109,8 @@ var InclusionesDetailsComComponent = (function () {
                     resp) {
                     _this.cursesDetails = resp; // assign to the local object        
                     var i = 0;
+                    console.log("EL SEMESTRE s");
+                    console.log(resp);
                     while (i < resp.length) {
                         var temInd = _this.searchPosSchool(resp[i].id);
                         if (temInd == -1) {
@@ -159,9 +164,10 @@ var InclusionesDetailsComComponent = (function () {
     };
     ;
     InclusionesDetailsComComponent.prototype.updateData = function () {
+        var _this = this;
         var req = {
             "estado_solicitud": this.inclusionDetails.estado, "memo_solicitud": this.inclusionDetails.memo_solicitud, "sesion_solicitud": this.inclusionDetails.sesion_solicitud,
-            "encargado_solicitud": 1, "observacion_solicitud": this.inclusionDetails.observacion_solicitud, "requiere_proceso": this.inclusionDetails.requiere_proceso
+            "encargado_solicitud": ng2_cookies_1.Cookie.get('idUser'), "observacion_solicitud": this.inclusionDetails.observacion_solicitud, "requiere_proceso": this.inclusionDetails.requiere_proceso
         };
         // console.log("upppupupupup");
         // console.log(req);
@@ -170,6 +176,17 @@ var InclusionesDetailsComComponent = (function () {
             resp) {
             console.log(resp);
             if (resp == 'Objeto cambiado') {
+                var obj = {
+                    "visto": false,
+                    "tipo": "Mensaje del Sistema CE con respecta a una inclusión",
+                    "fecha": new Date().toJSON().slice(0, 10).replace(/-/g, '/'),
+                    "correo_electronico": _this.inclusionDetails.correo_electronico,
+                    "descripcion": "Su apelación respecto a una inclusión ha sido modificada, el estado es " + req.estado_solicitud // cuerpo
+                };
+                console.log(obj);
+                _this._notifications.createEmail(obj).subscribe(function (resp) {
+                    console.log(resp);
+                });
                 swal({
                     title: 'Mensaje',
                     text: "Se van a realizar los cambios",
@@ -198,9 +215,9 @@ var InclusionesDetailsComComponent = (function () {
             moduleId: module.id,
             selector: 'details-Inclusion-Com-cmp',
             templateUrl: 'inclusionDetails.component.html',
-            providers: [inclusions_service_1.InclusionsService, curses_service_1.CursesService, students_service_1.StudentsService, users_service_1.UsersService, settings_service_1.SettingsService] // the provider of inclusions
+            providers: [inclusions_service_1.InclusionsService, curses_service_1.CursesService, students_service_1.StudentsService, users_service_1.UsersService, settings_service_1.SettingsService, notifications_service_1.NotificationsService] // the provider of inclusions
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location, inclusions_service_1.InclusionsService, curses_service_1.CursesService, students_service_1.StudentsService, users_service_1.UsersService, settings_service_1.SettingsService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location, inclusions_service_1.InclusionsService, curses_service_1.CursesService, students_service_1.StudentsService, users_service_1.UsersService, settings_service_1.SettingsService, notifications_service_1.NotificationsService])
     ], InclusionesDetailsComComponent);
     return InclusionesDetailsComComponent;
 }());

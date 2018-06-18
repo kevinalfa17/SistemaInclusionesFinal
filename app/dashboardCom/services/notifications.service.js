@@ -27,6 +27,9 @@ var NotificationsService = (function () {
             { "id": 55, "tipo": "ape", "estudiante": 2015104425, "descripcion": " algun lugar gg3", "leido": false, "idService": 2 },
         ];
     }
+    NotificationsService.prototype.createEmail = function (request) {
+        return this._http.post(this._Server.direction + 'ce/Notification/', request).map(function (res) { return res.json(); });
+    };
     NotificationsService.prototype.getAll = function () {
         //this._http.get('');
         return Observable_1.Observable.of(this.obj); //borrar

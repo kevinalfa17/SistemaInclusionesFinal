@@ -6,6 +6,8 @@ import { CursesService } from '../../services/curses.service';
 import { StudentsService } from '../../services/students.service';
 import { SettingsService } from '../../services/settings.service';
 import { UsersService } from '../../services/users.service';
+import { NotificationsService } from '../../services/notifications.service'; 
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 declare var $: any;
 declare var swal: any;
@@ -14,7 +16,7 @@ declare var swal: any;
     moduleId: module.id,
     selector: 'details-Inclusion-Com-cmp',
     templateUrl: 'levantamientoDetails.component.html',
-    providers: [LevantamientoService, CursesService, StudentsService, SettingsService, UsersService] // the provider of levantamiento
+    providers: [LevantamientoService, CursesService, StudentsService, SettingsService, UsersService, NotificationsService] // the provider of levantamiento
 })
 
 export class LevantamientoDetailsComComponent implements OnInit, OnDestroy {
@@ -34,7 +36,8 @@ export class LevantamientoDetailsComComponent implements OnInit, OnDestroy {
     private editingData = { "state": "", "revBy": 0, "reqP": "", "obse": "" };
 
     constructor(private _route: ActivatedRoute, private _location: Location, private _requestService: LevantamientoService,
-        private _cursesService: CursesService, private _studentsService: StudentsService, private _settingsService: SettingsService, private _usersService: UsersService) { }
+        private _cursesService: CursesService, private _studentsService: StudentsService, private _settingsService: SettingsService, 
+        private _usersService: UsersService, private _notifications: NotificationsService) { }
     ngOnInit(): any {
 
         this._usersService.getAllComUsersRoles().subscribe(  // get the status
@@ -190,7 +193,7 @@ export class LevantamientoDetailsComComponent implements OnInit, OnDestroy {
 
         var req = {
             "estado_solicitud": this.requestDetails.estado, "memo_solicitud": this.requestDetails.memo_solicitud, "sesion_solicitud": this.requestDetails.sesion_solicitud,
-            "encargado_solicitud": 1, "observacion_solicitud": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
+            "encargado_solicitud": Cookie.get('idUser'), "observacion_solicitud": this.requestDetails.observacion_solicitud, "requiere_proceso": this.requestDetails.requiere_proceso
         };
         // console.log("upppupupupup");
         // console.log(req);
@@ -198,6 +201,20 @@ export class LevantamientoDetailsComComponent implements OnInit, OnDestroy {
             resp => {
                 console.log(resp);
                 if (resp == 'Objeto modificado') {
+
+                    var obj = {
+                        "visto": false,
+                        "tipo": "Mensaje del Sistema CE con respecta a una apelación", // asunto
+                        "fecha": new Date(),
+                        "correo_electronico": this.requestDetails.correo_electronico, // correo al q le voy a mandar
+                        "descripcion": "Su apelación respecto a un levantamiento de requisito ha sido modificada, el estado es "+ req.estado_solicitud// cuerpo
+                    };
+
+                    console.log(obj);
+
+                    this._notifications.createEmail(obj).subscribe(resp => {
+                        console.log(resp);
+                    });
 
                     swal({
                         title: 'Mensaje',
