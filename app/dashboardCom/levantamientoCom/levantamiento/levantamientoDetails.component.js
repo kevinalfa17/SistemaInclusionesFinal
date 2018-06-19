@@ -175,9 +175,9 @@ var LevantamientoDetailsComComponent = (function () {
                 var obj = {
                     "visto": false,
                     "tipo": "Mensaje del Sistema CE con respecta a una apelación",
-                    "fecha": new Date(),
+                    "fecha": new Date().toJSON().slice(0, 10).replace(/-/g, '/'),
                     "correo_electronico": _this.requestDetails.correo_electronico,
-                    "descripcion": "Su apelación respecto a un levantamiento de requisito ha sido modificada, el estado es " + req.estado_solicitud // cuerpo
+                    "descripcion": "Su solicitud respecto a un levantamiento de requisito ha sido modificada, el estado es " + req.estado_solicitud // cuerpo
                 };
                 console.log(obj);
                 _this._notifications.createEmail(obj).subscribe(function (resp) {

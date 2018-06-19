@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
     moduleId: module.id,
     selector: 'admin-cmp',
     templateUrl: 'admin.component.html',
-    providers: [Cookie]
 })
 
 export class AdminComponent implements OnInit {

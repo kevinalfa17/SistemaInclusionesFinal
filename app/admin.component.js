@@ -26,7 +26,6 @@ var AdminComponent = (function () {
             moduleId: module.id,
             selector: 'admin-cmp',
             templateUrl: 'admin.component.html',
-            providers: [ng2_cookies_1.Cookie]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], AdminComponent);

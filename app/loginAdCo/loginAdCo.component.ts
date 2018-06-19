@@ -55,24 +55,23 @@ export class LoginAdCoComponent {
                     for (var i = 0; i < data.usuario.rols.length; ++i) {
 
                         if (data.usuario.rols[i].sistema == 1) {
+                            
                             var ir = data.usuario.rols[i].id_rol;
+                            console.log(ir);
                             if (ir == 1) {
                                 roles.role1 = '1';
                             }
-                            if (ir == 2) {
+                            if (ir == 3) {
                                 roles.role2 = '3';
                             }
                         }
                     }
 
-                    // console.log(roles);
+                    console.log(roles);
 
-                    roles.role1 = "1";
-                    roles.role2 = "3";
-
-                    // console.log('cook21');
-                    // console.log(Cookie.get("role1"));
-                    // console.log(Cookie.get("role2"));
+                    // console.log('cook21'); kevinalfa17@gmail.com
+                    // Cookie.set("role1", roles.role1);
+                    // Cookie.set("role2", roles.role2);
                     // console.log('cook22');
                     // console.log(this.service);
 

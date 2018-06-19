@@ -27,10 +27,10 @@ export class UsersService {
     ];
 
     //borrar
-    private obj2 = [{ "id_rol": 1, "nombre": "profe", "sistema": 1 },
-    { "id_rol": 2, "nombre": "estudiante", "sistema": 1 },
-    { "id_rol": 3, "nombre": "profe no aparecer", "sistema": 2 },
-    { "id_rol": 4, "nombre": "estudiante no aparecer", "sistema": 2 }];
+    private obj2 = [{ "id_rol": 1, "nombre": "Profesor", "sistema": 1 },
+    { "id_rol": 2, "nombre": "Estudiante", "sistema": 1 },
+    { "id_rol": 3, "nombre": "Profe no aparecer", "sistema": 2 },
+    { "id_rol": 4, "nombre": "Estudiante no aparecer", "sistema": 2 }];
 
     login(request) {
         return this._http.post(this._Server.directionUsers + '/ce/StudentAuth/Authenticate', request).map((res: Response) => res.json());

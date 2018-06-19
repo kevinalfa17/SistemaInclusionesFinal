@@ -137,9 +137,9 @@ export class ApelacionDetailsComComponent implements OnInit, OnDestroy {
                     var obj = {
                         "visto": false,
                         "tipo": "Mensaje del Sistema CE con respecta a una apelación", // asunto
-                        "fecha": new Date(),
+                        "fecha": new Date().toJSON().slice(0,10).replace(/-/g,'/'),
                         "correo_electronico": this.requestDetails.correo_electronico, // correo al q le voy a mandar
-                        "descripcion": "Su apelación respecto a "+this.apelacionTipo+" ha sido modificada, el estado es "+ req.estado_apelacion// cuerpo
+                        "descripcion": "Su solicitud respecto a "+this.apelacionTipo+" ha sido modificada, el estado es "+ req.estado_apelacion// cuerpo
                     };
 
                     this._notifications.createEmail(obj).subscribe(resp => {

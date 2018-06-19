@@ -16,7 +16,11 @@ var ComComponent = (function () {
         this.router = router;
     }
     ComComponent.prototype.ngOnInit = function () {
-        if ((ng2_cookies_1.Cookie.get("role2") != "3")) {
+        if ((ng2_cookies_1.Cookie.get("role2") != "3") || ((ng2_cookies_1.Cookie.get("role2") != "3") && (ng2_cookies_1.Cookie.get("role2") != "1"))) {
+            ng2_cookies_1.Cookie.deleteAll();
+            this.router.navigate(['loginAdCo']);
+        }
+        if ((ng2_cookies_1.Cookie.get("role2") != "3") || ((ng2_cookies_1.Cookie.get("role2") == "1"))) {
             ng2_cookies_1.Cookie.deleteAll();
             this.router.navigate(['loginAdCo']);
         }

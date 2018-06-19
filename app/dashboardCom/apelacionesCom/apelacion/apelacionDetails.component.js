@@ -115,9 +115,9 @@ var ApelacionDetailsComComponent = (function () {
                 var obj = {
                     "visto": false,
                     "tipo": "Mensaje del Sistema CE con respecta a una apelación",
-                    "fecha": new Date(),
+                    "fecha": new Date().toJSON().slice(0, 10).replace(/-/g, '/'),
                     "correo_electronico": _this.requestDetails.correo_electronico,
-                    "descripcion": "Su apelación respecto a " + _this.apelacionTipo + " ha sido modificada, el estado es " + req.estado_apelacion // cuerpo
+                    "descripcion": "Su solicitud respecto a " + _this.apelacionTipo + " ha sido modificada, el estado es " + req.estado_apelacion // cuerpo
                 };
                 _this._notifications.createEmail(obj).subscribe(function (resp) {
                     console.log(resp);

@@ -215,7 +215,7 @@ export class InclusionesDetailsComComponent implements OnInit, OnDestroy {
                         "tipo": "Mensaje del Sistema CE con respecta a una inclusión", // asunto
                         "fecha": new Date().toJSON().slice(0,10).replace(/-/g,'/'),
                         "correo_electronico": this.inclusionDetails.correo_electronico, // correo al q le voy a mandar
-                        "descripcion": "Su apelación respecto a una inclusión ha sido modificada, el estado es "+ req.estado_solicitud// cuerpo
+                        "descripcion": "Su solicitud respecto a una inclusión ha sido modificada, el estado es "+ req.estado_solicitud// cuerpo
                     };
 
                     console.log(obj);
