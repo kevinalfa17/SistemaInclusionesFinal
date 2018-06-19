@@ -16,8 +16,8 @@ var LoginAdCoComponent = (function () {
     function LoginAdCoComponent(_reqService, router) {
         this._reqService = _reqService;
         this.router = router;
-        this.password = "welcome123";
-        this.email = "lcortes@itcr.ac.cr";
+        this.password = "";
+        this.email = "";
         this.service = 0;
     }
     //lcortes@itcr.ac.cr

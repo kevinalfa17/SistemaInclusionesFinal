@@ -10,8 +10,8 @@ export class ServerService {
     public directionUsers: String;
 
     constructor() {
-        this.direction = 'http://192.168.0.34/CE-Transaction/';
-        this.directionUsers = "http://192.168.0.34/CE-Authentication/";
+        this.direction = 'http://192.168.43.47/CE-Transaction/';
+        this.directionUsers = "http://192.168.43.47/CE-Authentication/";
     }
 
     public handleError(error: Response | any) {

@@ -12,8 +12,8 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 export class LoginAdCoComponent {
 
-    password: string = "welcome123";
-    email: string = "lcortes@itcr.ac.cr";
+    password: string = "";
+    email: string = "";
     service: number = 0;
 
     constructor(private _reqService: AuthService, private router: Router) {

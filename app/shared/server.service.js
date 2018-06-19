@@ -14,8 +14,8 @@ var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/observable/throw');
 var ServerService = (function () {
     function ServerService() {
-        this.direction = 'http://192.168.0.34/CE-Transaction/';
-        this.directionUsers = "http://192.168.0.34/CE-Authentication/";
+        this.direction = 'http://192.168.43.47/CE-Transaction/';
+        this.directionUsers = "http://192.168.43.47/CE-Authentication/";
     }
     ServerService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure
